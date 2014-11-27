@@ -66,7 +66,7 @@ Navigate to http://yourServerIpAddress  and you should have yeoman landing page.
 
 ### Project backlog
 
-*	Can update latest version in production by push of a button
+*	Can update latest version in production (manually) (automatically to latest) ( by push of a button )
   
   Including changes to data structure.
 
@@ -75,41 +75,40 @@ Navigate to http://yourServerIpAddress  and you should have yeoman landing page.
   Commit stage / continuous integration.
 
 *	Can play tic-tac-toe against another user
-
- Implement using TDD
- Acceptance TDD
- Controller TDD
- DOM - TicTacToe directive with TDD
- Server side, API TDD
+  * Implement using TDD
+  * Acceptance TDD
+  * Controller TDD
+  * DOM - TicTacToe directive with TDD
+  * Server side, API TDD
 
 *	Can play-back any given game to see how it was played
 
- Use event sourcing - record every user interaction
+  Use event sourcing - record every user interaction
 
 *	Can get an email when I win a match
 
- Implement an acceptance test, using test double to simulate email sending
+  Implement an acceptance test, using test double to simulate email sending
 
 *	Can downgrade to selected version by push of a button
 
- Implement rollback, including down migrations
+  Implement rollback, including down migrations
 
 *	Can playback old games after data structure has changed
 
- Database migration
+  Database migration
 
 *	Can see how many users played Tic-Tac-Toe in a given period
 
- Metrics and monitoring
+  Metrics and monitoring
 
 *	Can know how many users our application supports on given hardware
 
- Automated capacity testing
+  Automated capacity testing
 
 *	Can be sure that latest version in production supports happy path after upgrade
 
- Acceptance test through UI
- Acceptance test through API
+  Acceptance test through UI
+  Acceptance test through API
 
 *	Can update to latest version with zero downtime
 
