@@ -3,6 +3,10 @@
 echo Cleaning...
 rm -rf ./dist
 
+echo Resolving npm and bower dependencies
+npm install
+bower install
+
 echo Building app
 grunt
 
