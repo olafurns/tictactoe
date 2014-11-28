@@ -17,7 +17,7 @@ cp ./Dockerfile ./dist/
 cd dist
 npm install --production
 
-echo Building docker image
-docker build -t olafurns/tictactoe .
+#echo Building docker image
+#docker build -t olafurns/tictactoe .
 
 echo "Done"
