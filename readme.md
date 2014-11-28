@@ -55,7 +55,7 @@ bower install
 * run 
 ``` 
 docker push <yourname>/tictactoe"
-``` 
+```
 
 On Digital Ocean server (production)
 
@@ -72,9 +72,10 @@ Navigate to http://yourServerIpAddress  and you should have yeoman landing page.
   
   Including changes to data structure.
 
-* Can get feedback on failing tests and diagnostics
+* Can get feedback on failing tests and diagnostics 
 
   Commit stage / continuous integration.
+    - Get grunt to run
 
 *	Can play tic-tac-toe against another user
   * Implement using TDD
@@ -135,3 +136,14 @@ Navigate to http://yourServerIpAddress  and you should have yeoman landing page.
   
 * Can provision a new environment in cloud (Digital Ocean) with minimal input.
   Script server provisioning. [Droplet API](https://developers.digitalocean.com/#droplets)
+
+
+#### Fimmtudagur 27.11
+Goal is to run dockerbuild, upload to dockerhub. Create account and droplet on 
+Digital Ocean, configure as a docker host and run tictactoe template project.
+When you can open page on you digital ocean server, you're done.
+
+#### Föstudagur 28.11
+Goal is to implement rudimentary Commit stage using Thoughtworks GO.
+When you have task success in Go after running grunt and/or dockerbuild shell script,
+you're done.
