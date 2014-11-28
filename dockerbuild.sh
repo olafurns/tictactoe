@@ -1,5 +1,7 @@
 #!/bin/bash
 
+env
+
 echo Cleaning...
 rm -rf ./dist
 
