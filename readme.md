@@ -48,6 +48,8 @@ Docker setup and installation
 * make sure docker is running (boot2docker)
 * run 
 ``` 
+npm install
+bower install
 ./dockerbuild
 ``` 
 * run 
