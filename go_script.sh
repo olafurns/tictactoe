@@ -1,8 +1,7 @@
 #!/bin/bash
-
 set -e
 
-echo Cleaning...
+echo "Cleaning..."
 rm -rf ./dist
 
 echo "Installing grunt"
@@ -20,11 +19,14 @@ bower install
 echo "Running grunt"
 grunt
 
+echo "Done running grunt"
 cp ./Dockerfile ./dist/
 cd dist
 
-echo "Building docker"
+echo "Npm install production"
+npm install --production
 
+echo "Building docker image"
 docker build -t olafurns/tictactoe .
 
-
+echo "Done"
