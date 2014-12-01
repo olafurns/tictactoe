@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-"Connecting to production server"
+echo "Connecting to production server"
 
 ssh root@178.62.64.58
 
