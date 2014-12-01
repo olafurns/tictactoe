@@ -23,7 +23,7 @@ echo "Done with preperations"
 echo "Moving to docker build"
 
 echo "Building docker"
-docker build -t olafurns/tictactoe
+docker build -t olafurns/tictactoe .
 
 echo "Pushing docker image"
 docker push olafurns/tictactoe
