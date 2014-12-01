@@ -28,4 +28,4 @@ docker build -t olafurns/tictactoe
 echo "Pushing docker image"
 docker push olafurns/tictactoe
 
-echo "Done"'
+echo "Done"
