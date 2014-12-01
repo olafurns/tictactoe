@@ -2,6 +2,8 @@
 
 echo Cleaning...
 rm -rf ./dist
+rm -rf ./node_modules
+
 
 echo "Installing grunt"
 npm install grunt
