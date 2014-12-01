@@ -2,8 +2,6 @@
 echo "MURDERRRR"
 echo Cleaning...
 rm -rf ./dist
-ln -s /usr/bin/nodejs /usr/bin/node
-
 
 echo "Installing grunt"
 npm install grunt
@@ -23,24 +21,23 @@ grunt
 
 
 cp ./Dockerfile ./dist/
-
 cd dist
 
 
-echo "Done with preperations"
-echo "Moving to docker build"
+#echo "Done with preperations"
+#echo "Moving to docker build"
 
-echo "Building docker"
-docker build -t olafurns/tictactoe .
+#echo "Building docker"
+#docker build -t olafurns/tictactoe .
 
-echo "Pushing docker image"
-docker push olafurns/tictactoe
+#echo "Pushing docker image"
+#docker push olafurns/tictactoe
 
-echo "Done with local"
+#echo "Done with local"
 
 
-echo "Connecting to production server.."
+#echo "Connecting to production server.."
 
-ssh root@178.62.64.58 'bash -s' < sshProduction.sh
+#ssh root@178.62.64.58 'bash -s' < sshProduction.sh
 
-echo "All finished."
+#echo "All finished."
