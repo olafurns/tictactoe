@@ -1,29 +1,22 @@
-#!/bin/bash
-
-# export PATH=$PATH:/usr/local/bin
-
-echo Linking node and nodejs
-ln -s /usr/bin/nodejs /usr/bin/node
+'#!/bin/bash
 
 echo Cleaning...
 rm -rf ./dist
 
+echo "Installing grunt"
+npm install grunt
 
-echo Resolving npm and bower dependencies
+echo "Installing bower"
+npm install bower
+
+echo "Npm install"
 npm install
+
+echo "Bower install"
 bower install
 
-echo Building app
+
+echo "Running grunt"
 grunt
 
-cp ./Dockerfile ./dist/
-
-cd dist
-
-echo npm install
-npm install --production
-
-#echo Building docker image
-#docker build -t olafurns/tictactoe .
-
-echo "Done"
+echo "Done"'
