@@ -1,4 +1,4 @@
-!/bin/bash
+#!/bin/bash
 
 export PATH=$PATH:/usr/local/bin
 
@@ -13,8 +13,8 @@ echo Building app
 grunt
 
 cp ./Dockerfile ./dist/
-
 cd dist
+
 npm install --production
 
 echo Building docker image
