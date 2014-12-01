@@ -19,4 +19,13 @@ bower install
 echo "Running grunt"
 grunt
 
-echo "Done"'
+echo "Done with preperations"
+echo "Moving to docker build"
+
+echo "Building docker"
+docker build -t olafurns/tictactoe
+
+echo "Pushing docker image"
+docker push olafurns/tictactoe
+
+echo "Done"
