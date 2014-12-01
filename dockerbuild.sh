@@ -1,6 +1,6 @@
-#!/bin/bash
+!/bin/bash
 
-# export PATH=$PATH:/usr/local/bin
+export PATH=$PATH:/usr/local/bin
 
 echo Cleaning...
 rm -rf ./dist

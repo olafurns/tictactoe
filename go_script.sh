@@ -24,12 +24,10 @@ cp ./Dockerfile ./dist/
 cd dist
 
 
-#echo "Done with preperations"
-#echo "Moving to docker build"
+echo "Done with preperations"
+echo "Moving to docker build"
 
-#echo "Building docker"
-#docker build -t olafurns/tictactoe .
+echo "Building docker"
+docker build -t olafurns/tictactoe .
 
-#echo "Done with local"
 
-#echo "All finished."
