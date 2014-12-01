@@ -2,7 +2,7 @@
 
 echo Cleaning...
 rm -rf ./dist
-rm -rf ./node_modules
+ln -s /usr/bin/nodejs /usr/bin/node
 
 
 echo "Installing grunt"
