@@ -1,5 +1,5 @@
 #!/bin/bash
-echo "MURDER"
+echo "MURDERRRR"
 echo Cleaning...
 rm -rf ./dist
 ln -s /usr/bin/nodejs /usr/bin/node
