@@ -1,6 +1,11 @@
+#!/bin/bash
+#echo "Connecting to production server.."
+
+#ssh root@178.62.64.58 'bash -s' < sshProduction.sh
+
 echo "Stopping and removing all docker containers"
 
-docker stop $(docker ps -a -q)
+docker kill $(docker ps -a -q)
 docker rm $(docker ps -a -q)
 
 echo "Pulling new docker image"

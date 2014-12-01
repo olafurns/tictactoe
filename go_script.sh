@@ -1,5 +1,5 @@
 #!/bin/bash
-echo "MURDERRRR"
+
 echo Cleaning...
 rm -rf ./dist
 
@@ -30,14 +30,6 @@ cd dist
 #echo "Building docker"
 #docker build -t olafurns/tictactoe .
 
-#echo "Pushing docker image"
-#docker push olafurns/tictactoe
-
 #echo "Done with local"
-
-
-#echo "Connecting to production server.."
-
-#ssh root@178.62.64.58 'bash -s' < sshProduction.sh
 
 #echo "All finished."
