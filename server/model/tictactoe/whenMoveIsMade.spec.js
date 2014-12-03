@@ -106,6 +106,61 @@ describe('make move command', function(){
     should(JSON.stringify(actualEvent)).be.exactly(JSON.stringify(then));
   });
 
+  it('should emit reject move when position not free', function(){
+    var given = [{
+      event: "GameCreated",
+      user:{
+        userName:"Jesus"
+      },
+      name:"RiseOfTheDead",
+      timeStamp:"2014-01-01T03:06:00"
+
+    },
+      {
+        event: "GameJoined",
+        user:{
+          userName:"God"
+        },
+        name:"RiseOfTheDead",
+        timeStamp:"2014-01-01T03:08:00"
+
+      },
+      {
+        event:"MoveMade",
+        user:{
+          userName:"Jesus"
+        },
+        move:"0",
+        name:"RiseOfTheDead",
+        timeStamp:"2014-01-01T03:12:00"
+      }
+    ];
+
+    var when = {
+      cmd:"MakeMove",
+      user:{
+        userName:"God"
+      },
+      move:"0",
+      name:"RiseOfTheDead",
+      timeStamp:"2014-01-01T03:12:00"
+    };
+
+    var then = [{
+      event:"SpotTaken",
+      user:{
+        userName:"God"
+      },
+      move:"0",
+      name:"RiseOfTheDead",
+      timeStamp:"2014-01-01T03:12:00"
+    }];
+    ////
+    var actualEvent = tictactoe(given).executeCommand(when);
+    should(actualEvent.length).be.exactly(1);
+    should(JSON.stringify(actualEvent)).be.exactly(JSON.stringify(then));
+  });
+
 
 
 });

@@ -34,7 +34,7 @@ module.exports = function(history){
 
         },
         "MakeMove": function(cmd){
-          if(gameState.spotTaken())
+          if(gameState.spotTaken(cmd))
           {
             return [{
               event: "SpotTaken",
