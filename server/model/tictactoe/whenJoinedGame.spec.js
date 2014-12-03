@@ -53,7 +53,7 @@ describe('join game command', function() {
       user:{
         userName:"Jesus"
       },
-      name:"GameOfLife",
+      name:"RiseOfTheDead",
       timeStamp:"2014-01-01T03:06:00"
 
     },
@@ -62,7 +62,7 @@ describe('join game command', function() {
         user:{
           userName:"God"
         },
-        name:"GameOfLife",
+        name:"RiseOfTheDead",
         timeStamp:"2014-01-01T03:08:00"
 
       }];
@@ -72,7 +72,7 @@ describe('join game command', function() {
       user:{
         userName:"Satan"
       },
-      name:"GameOfLife",
+      name:"RiseOfTheDead",
       timeStamp:"2014-01-01T03:10:00"
 
     };
@@ -82,7 +82,7 @@ describe('join game command', function() {
       user:{
         userName:"Satan"
       },
-      name:"GameOfLife",
+      name:"RiseOfTheDead",
       timeStamp:"2014-01-01T03:10:00"
     }];
 
