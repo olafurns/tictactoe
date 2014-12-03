@@ -29,7 +29,7 @@ module.exports = function(history){
       var lastPlayer = history[history.length-1].user.userName;
 
     return lastPlayer === event.user.userName;
-    return false
+
   }
 
   return{
@@ -43,7 +43,7 @@ module.exports = function(history){
       return spotTaken;
     },
     notPlayerTurn: function(move) {
-     
+
       return notPlayerTurn(move);
     }
   }

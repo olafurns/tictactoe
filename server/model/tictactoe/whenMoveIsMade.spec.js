@@ -102,7 +102,8 @@ describe('make move command', function(){
     }];
 
     var actualEvent = tictactoe(given).executeCommand(when);
-    //should(JSON.stringify(actualEvent)).be.exactly(JSON.stringify(then));
+    should(actualEvent.length).be.exactly(1);
+    should(JSON.stringify(actualEvent)).be.exactly(JSON.stringify(then));
   });
 
 
