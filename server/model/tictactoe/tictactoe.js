@@ -2,7 +2,7 @@ module.exports = function(history){
 
   var states = require('./gameStates');
 
-  var gameState = states(history)
+  var gameState = states(history);
 
   return {
     executeCommand: function(cmd){
@@ -34,6 +34,26 @@ module.exports = function(history){
 
         },
         "MakeMove": function(cmd){
+          if(gameState.spotTaken())
+          {
+            return [{
+              event: "SpotTaken",
+              user: cmd.user,
+              move: cmd.move,
+              name: cmd.name,
+              timeStamp: cmd.timeStamp
+            }]
+          };
+          if(gameState.notPlayerTurn(cmd))
+          {
+            return [{
+              event: "NotPlayerTurn",
+              user: cmd.user,
+              move: cmd.move,
+              name: cmd.name,
+              timeStamp: cmd.timeStamp
+            }]
+          }
           return[{
             event:"MoveMade",
             user: cmd.user,
