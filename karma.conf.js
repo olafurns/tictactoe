@@ -72,6 +72,14 @@ module.exports = function(config) {
     // - IE (only Windows)
     browsers: ['PhantomJS'],
 
+    rreporters: ['progress', 'junit'],
+
+    // the default configuration
+    junitReporter: {
+      outputFile: 'test-results.xml',
+      suite: ''
+    },
+
 
     // Continuous Integration mode
     // if true, it capture browsers, run tests and exit
