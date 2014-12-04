@@ -9,10 +9,8 @@ var win  = require('./isGameWon');
 module.exports = function(history){
   var gameFull = false;
   var gameBoard = ['','','','','','','','',''];
-  var turns = 0;
-  var spotOccupied = false;
-  var notYourTurn = false;
   var winner = false;
+  var turns = 0;
 
   _.each(history, function(event){
     if(event.event === "GameJoined"){
@@ -22,6 +20,7 @@ module.exports = function(history){
     if(event.event === "MoveMade")
     {
       gameBoard[event.move.grid] = event.move.symbol;
+      turns++;
     }
 
   });
@@ -40,9 +39,10 @@ module.exports = function(history){
   }
 
   function makeMove(event) {
+
+    turns++;
     gameBoard[event.move.grid] = event.move.symbol;
     winner = win(gameBoard, event.move.symbol);
-
   }
 
 
@@ -66,7 +66,7 @@ module.exports = function(history){
     },
     gameDraw: function()
     {
-      return turns === 8;
+      return turns === 9 && !winner;
     },
     makeMove: function(cmd)
     {
