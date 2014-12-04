@@ -4,10 +4,16 @@
 
 var _ = require('lodash');
 
+var win  = require('./isGameWon');
+
 module.exports = function(history){
   var gameFull = false;
   var gameBoard = ['','','','','','','','',''];
   var turns = 0;
+  var spotOccupied = false;
+  var notYourTurn = false;
+  var winner = false;
+
   _.each(history, function(event){
     if(event.event === "GameJoined"){
       gameFull = true;
@@ -15,8 +21,7 @@ module.exports = function(history){
 
     if(event.event === "MoveMade")
     {
-      placeMarkOnBoard(event);
-      turns++;
+      gameBoard[event.move.grid] = event.move.symbol;
     }
 
   });
@@ -30,30 +35,43 @@ module.exports = function(history){
   }
 
   function spotTaken(event) {
-    return gameBoard[event.move] != '';
+
+    return gameBoard[event.move.grid] !== '';
   }
 
-  function placeMarkOnBoard(event)
-  {
-    if(turns % 2 === 0)
-      gameBoard[event.move] = 'X';
-    else
-      gameBoard[event.move] = '0';
+  function makeMove(event) {
+    gameBoard[event.move.grid] = event.move.symbol;
+    winner = win(gameBoard, event.move.symbol);
 
   }
+
+
 
   return{
     gameFull: function(){
       return gameFull;
     },
-    gameBoard: function(){
-      return gameBoard;
-    },
     spotTaken: function(event) {
       return spotTaken(event);
+
     },
     notPlayerTurn: function(event) {
+
       return notPlayerTurn(event);
+
+    },
+    gameWon: function()
+    {
+      return winner;
+    },
+    gameDraw: function()
+    {
+      return turns === 8;
+    },
+    makeMove: function(cmd)
+    {
+      makeMove(cmd);
     }
-  }
+
+  };
 };

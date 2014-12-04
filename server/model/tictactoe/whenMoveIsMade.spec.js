@@ -31,7 +31,10 @@ describe('make move command', function(){
       user:{
         userName:"Jesus"
       },
-      move:"0",
+      move: {
+        grid:"0",
+        symbol:"X"
+      },
       name:"RiseOfTheDead",
       timeStamp:"2014-01-01T03:12:00"
     };
@@ -41,7 +44,10 @@ describe('make move command', function(){
       user:{
         userName:"Jesus"
       },
-      move:"0",
+      move:{
+        grid:"0",
+        symbol:"X"
+      },
       name:"RiseOfTheDead",
       timeStamp:"2014-01-01T03:12:00"
     }];
@@ -75,7 +81,10 @@ describe('make move command', function(){
         user:{
           userName:"Jesus"
         },
-        move:"0",
+        move:{
+          grid:"0",
+          symbol:"X"
+        },
         name:"RiseOfTheDead",
         timeStamp:"2014-01-01T03:12:00"
       }
@@ -86,7 +95,10 @@ describe('make move command', function(){
       user:{
         userName:"Jesus"
       },
-      move:"1",
+      move:{
+        grid:"1",
+        symbol:"X"
+      },
       name:"RiseOfTheDead",
       timeStamp:"2014-01-01T03:12:00"
     };
@@ -96,7 +108,10 @@ describe('make move command', function(){
       user:{
         userName:"Jesus"
       },
-      move:"1",
+      move:{
+        grid:"1",
+        symbol:"X"
+      },
       name:"RiseOfTheDead",
       timeStamp:"2014-01-01T03:12:00"
     }];
@@ -158,6 +173,110 @@ describe('make move command', function(){
     ////
     var actualEvent = tictactoe(given).executeCommand(when);
     should(actualEvent.length).be.exactly(1);
+
+    console.log(actualEvent);
+    should(JSON.stringify(actualEvent)).be.exactly(JSON.stringify(then));
+  });
+
+  it('should emit player one wins with top row', function(){
+    var given = [{
+      event: "GameCreated",
+      user:{
+        userName:"Jesus"
+      },
+      name:"RiseOfTheDead",
+      timeStamp:"2014-01-01T03:06:00"
+
+    },
+      {
+        event: "GameJoined",
+        user:{
+          userName:"God"
+        },
+        name:"RiseOfTheDead",
+        timeStamp:"2014-01-01T03:08:00"
+
+      },
+      {
+        event:"MoveMade",
+        user:{
+          userName:"Jesus"
+        },
+        move:{
+          grid:"0",
+          symbol:"X"
+        },
+        name:"RiseOfTheDead",
+        timeStamp:"2014-01-01T03:12:00"
+      },
+      {
+        event:"MoveMade",
+        user:{
+          userName:"God"
+        },
+        move:{
+          grid:"3",
+          symbol:"0"
+        },
+        name:"RiseOfTheDead",
+        timeStamp:"2014-01-01T03:12:00"
+      },
+      {
+        event:"MoveMade",
+        user:{
+          userName:"Jesus"
+        },
+        move:{
+          grid:"1",
+          symbol:"X"
+        },
+        name:"RiseOfTheDead",
+        timeStamp:"2014-01-01T03:12:00"
+      },
+      {
+        event:"MoveMade",
+        user:{
+          userName:"God"
+        },
+        move:{
+          grid:"4",
+          symbol:"0"
+        },
+        name:"RiseOfTheDead",
+        timeStamp:"2014-01-01T03:12:00"
+      }
+    ];
+
+    var when = {
+      cmd:"MakeMove",
+      user:{
+        userName:"Jesus"
+      },
+      move:{
+        grid:"2",
+        symbol:"X"
+      },
+      name:"RiseOfTheDead",
+      timeStamp:"2014-01-01T03:12:00"
+    };
+
+    var then = [{
+      event:"GameWon",
+      user:{
+        userName:"Jesus"
+      },
+      move:{
+        grid:"2",
+        symbol:"X"
+      },
+      name:"RiseOfTheDead",
+      timeStamp:"2014-01-01T03:12:00"
+    }];
+    ////
+    var actualEvent = tictactoe(given).executeCommand(when);
+    should(actualEvent.length).be.exactly(1);
+
+    console.log(actualEvent);
     should(JSON.stringify(actualEvent)).be.exactly(JSON.stringify(then));
   });
 

@@ -1,7 +1,6 @@
 module.exports = function(history){
 
   var states = require('./gameStates');
-
   var gameState = states(history);
 
   return {
@@ -54,6 +53,27 @@ module.exports = function(history){
               timeStamp: cmd.timeStamp
             }]
           }
+          gameState.makeMove(cmd);
+          if(gameState.gameWon())
+          {
+            return [{
+              event: "GameWon",
+              user: cmd.user,
+              move: cmd.move,
+              name: cmd.name,
+              timeStamp: cmd.timeStamp
+            }]
+          };
+          if(gameState.gameDraw())
+          {
+            return [{
+              event: "GameDraw",
+              user: cmd.user,
+              move: cmd.move,
+              name: cmd.name,
+              timeStamp: cmd.timeStamp
+            }]
+          };
           return[{
             event:"MoveMade",
             user: cmd.user,
