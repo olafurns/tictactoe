@@ -45,8 +45,6 @@ module.exports = function(history){
     winner = win(gameBoard, event.move.symbol);
   }
 
-
-
   return{
     gameFull: function(){
       return gameFull;
