@@ -48,7 +48,19 @@ describe('Event stored in memory', function() {
 
   });
 
+  it('should add new stored events to previous stored events array', function() {
+    var storage = mem();
+
+    storage.storeEvents('1010', [createGameEvent,joinGameEvent]);
+
+    var loadedEvents = storage.loadEvents('1010');
+
+
+    should(loadedEvents).eql([createGameEvent,joinGameEvent]);
+    should(loadedEvents).not.eql([joinGameEvent,createGameEvent]);
+  })
 
 
 
-})
+
+});
