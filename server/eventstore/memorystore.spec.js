@@ -35,7 +35,16 @@ describe('Event stored in memory', function() {
 
     should(loadedEvents.length).be.exactly(0);
     should(loadedEvents).be.instanceOf(Array);
+  });
 
+  it('should return event already stored', function(){
+    var storage = mem();
+
+    storage.storeEvents('1010', [createGameEvent]);
+
+    var loadedEvents = storage.loadEvents('1010');
+
+    should(JSON.stringify(loadedEvents)).be.exactly(JSON.stringify([createGameEvent]));
 
   });
 
