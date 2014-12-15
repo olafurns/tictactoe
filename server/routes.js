@@ -8,9 +8,10 @@ var errors = require('./components/errors');
 
 module.exports = function(app) {
 
-  // Insert routes below
-  app.use('/api/things', require('./api/thing'));
-  
+  // Insert routes belowss
+  app.use('/api/things', require('./api/thing')(app).router);
+  app.use('/api/createGame', require('./api/createGame')(app).router);
+
   // All undefined asset or api routes should return a 404
   app.route('/:url(api|auth|components|app|bower_components|assets)/*')
    .get(errors[404]);
