@@ -10,11 +10,19 @@ module.exports = function(eventStore, commandHandler){
     handleCommand : function(cmd) {
       var eventStream = eventStore.loadEvents(cmd.id);
 
-      var events = commandHandler(eventStream).executeCommand(cmd);
+      var resultingEvents = [];
 
-      eventStore.storeEvents(cmd.id,events);
+      _.each(commandHandler, function(handler){
 
-      return events;
+
+        var items = handler(eventStream).executeCommand(cmd);
+        console.debug("items", items);
+
+        resultingEvents = resultingEvents.concat(items);
+        console.debug("resulting events", resultingEvents);
+      });
+
+      return resultingEvents;
     }
   }
 

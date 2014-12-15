@@ -12,6 +12,8 @@ module.exports = function(app) {
 
   var router = express.Router();
 
+  console.debug("Adding post to router");
+
   router.post('/', controller.createGame);
 
   return {
