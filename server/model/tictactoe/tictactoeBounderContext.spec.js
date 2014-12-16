@@ -1,80 +1,57 @@
+/**
+ * Created by olafurns on 8.12.2014.
+ */
+
 var should = require('should');
 var _ = require('lodash');
 
+describe('tictactoe game context stubs', function() {
 
-describe('tictactoe game context using stubs.', function() {
+  it('should route command to a started tictactoe game with an event stream from storage and return from storage generated events', function () {
 
-  it('should route command to instantiated tictactoe game with event stream from store and return generated events.', function(){
+    var calledWithEventStoreId;
+    var storedEvents;
 
     var eventStoreStub = {
-      loadEvents: function(aggregateId){
+      loadEvents: function(aggregatedID) {
+        calledWithEventStoreId = aggregatedID;
         return [];
+      },
+      storeEvents: function (aggregatedID, events) {
+        storedEvents = events;
       }
+
     };
 
-    var executedCommand = {};
+    var execCommmand = {};
 
-    var tictactoe = function(history){
+    var tictactoeStub = function (history) {
       return {
-        executeCommand : function(cmd){
+        executeCommand: function (cmd) {
           executedCommand = cmd;
           return [];
         }
       }
     };
 
-    var commandHandlers = [tictactoe];
+    var commHandlers = tictactoeStub;
 
-    var gameContext = require('./tictactoeBoundedContext')(eventStoreStub, commandHandlers);
+    var boundedContext = require('./tictactoeBoundedContext')(eventStoreStub,commHandlers);
 
     var emptyCommand = {
-      id: "123"
+      id: "1010"
     };
 
-    var events = gameContext.handleCommand(emptyCommand);
+    var events = boundedContext.handleCommand(emptyCommand);
 
-    should(executedCommand.id).be.exactly("123");
+    should(executedCommand.id).be.exactly("1010");
+    //should(calledWithEventStoreId).be.exactly("1010");
     should(events.length).be.exactly(0);
+    //should(storedEvents).be.exactly(events);
   });
 
 
-  it('should route command to instantiated tictactoe game with event stream from store and return generated events, using mock style tests.',function(){
 
-    var jm = require('jsmockito').JsMockito;
-    jm.Integration.importTo(global);
-
-    var mockStore = spy({
-      loadEvents : function(){
-      }
-    });
-
-    when(mockStore).loadEvents('123').thenReturn([]);
-
-    var mockTickTackToe = spy({
-      executeCommand : function(){
-
-      }
-    });
-
-    when(mockTickTackToe).executeCommand().thenReturn([]);
-
-
-    var commandHandlers =[function(){
-      return mockTickTackToe
-    }];
-    var gameContext = require('./tictactoeBoundedContext')(mockStore, commandHandlers);
-
-    var emptyCommand = {
-      id: "123"
-    };
-
-    gameContext.handleCommand(emptyCommand);
-
-    jm.verify(mockStore).loadEvents('123');
-
-    jm.verify(mockTickTackToe).executeCommand(emptyCommand);
 
   });
 
-
-});

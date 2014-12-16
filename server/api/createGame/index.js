@@ -2,11 +2,11 @@
  * Created by olafurns on 12.12.2014.
  */
 
-'use strict'
+'use strict';
 
 var express = require('express');
 
-var controller = require('./createGame.controller');
+var controller = require('../command.controller.js');
 
 module.exports = function(app) {
 
@@ -14,10 +14,10 @@ module.exports = function(app) {
 
   console.debug("Adding post to router");
 
-  router.post('/', controller.createGame);
+  router.post('/', controller.executeCommand);
 
   return {
 
-    router: router
+    router:router
   }
-}
+};

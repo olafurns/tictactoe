@@ -34,7 +34,7 @@ describe('Event stored in memory', function() {
     var loadedEvents = storage.loadEvents('0000');
 
     should(loadedEvents.length).be.exactly(0);
-    should(loadedEvents).be.instanceOf(Array);
+    should(loadedEvents).be.instanceof(Array);
   });
 
   it('should return event already stored', function(){
