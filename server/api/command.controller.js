@@ -15,12 +15,11 @@ exports.executeCommand = function(req, res) {
 
   try {
     if (!app.eventStore) {
-      app.eventStore = require('../eventstore/memorystore');
+      app.eventStore = require('../eventstore/memorystore')();
     }
 
 
     var store = app.eventStore;
-
     var ctx = boundedCtx(store, ticHandler);
 
     var result = ctx.handleCommand(req.body);
@@ -32,4 +31,4 @@ exports.executeCommand = function(req, res) {
     res.json(e);
   }
 
-}
+};

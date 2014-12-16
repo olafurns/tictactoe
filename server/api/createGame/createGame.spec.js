@@ -1,5 +1,5 @@
 /**
- * Created by olafurns on 12.12.2014.
+ * Created by olafurns on 16.12.2014.
  */
 
 'use strict';
@@ -10,7 +10,7 @@ var request = require('supertest');
 
 describe('POST /api/createGame', function() {
 
-  it("should respond with event in JSON array", function(done) {
+  it('should respond with event in JSON array', function(done) {
     var command = {
       id: "1337",
       cmd: "CreateGame",
@@ -22,7 +22,7 @@ describe('POST /api/createGame', function() {
     };
 
     var req = request(app);
-
+    //
     req
       .post('/api/createGame')
       .type('json')

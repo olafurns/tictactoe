@@ -1,12 +1,11 @@
 /**
- * Created by olafurns on 12.12.2014.
+ * Created by olafurns on 16.12.2014.
  */
 
 'use strict';
 
 var express = require('express');
-
-var controller = require('../command.controller.js');
+var controller = require('../command.controller');
 
 module.exports = function(app) {
 
@@ -17,7 +16,6 @@ module.exports = function(app) {
   router.post('/', controller.executeCommand);
 
   return {
-
     router:router
   }
 };

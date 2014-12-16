@@ -1,57 +1,92 @@
-/**
- * Created by olafurns on 8.12.2014.
- */
-
 var should = require('should');
 var _ = require('lodash');
 
-describe('tictactoe game context stubs', function() {
 
-  it('should route command to a started tictactoe game with an event stream from storage and return from storage generated events', function () {
+describe('tictactoe game context using stubs.', function() {
+
+  it('should route command to instantiated tictactoe game with event stream from store and return and store generated events.', function(){
 
     var calledWithEventStoreId;
     var storedEvents;
-
     var eventStoreStub = {
-      loadEvents: function(aggregatedID) {
-        calledWithEventStoreId = aggregatedID;
+      loadEvents: function(aggregateId){
+        calledWithEventStoreId = aggregateId;
         return [];
       },
-      storeEvents: function (aggregatedID, events) {
+      storeEvents : function(aggregateId, events){
         storedEvents = events;
       }
-
     };
 
-    var execCommmand = {};
+    var executedCommand = {};
 
-    var tictactoeStub = function (history) {
+    var tictactoe = function(history){
       return {
-        executeCommand: function (cmd) {
+        executeCommand : function(cmd){
           executedCommand = cmd;
           return [];
         }
       }
     };
 
-    var commHandlers = tictactoeStub;
+    var commandHandlers = tictactoe;
 
-    var boundedContext = require('./tictactoeBoundedContext')(eventStoreStub,commHandlers);
+    var boundedContext = require('./tictactoeBoundedContext')(eventStoreStub, commandHandlers);
 
     var emptyCommand = {
-      id: "1010"
+      id: "123"
     };
 
     var events = boundedContext.handleCommand(emptyCommand);
 
-    should(executedCommand.id).be.exactly("1010");
-    //should(calledWithEventStoreId).be.exactly("1010");
+    should(executedCommand.id).be.exactly("123");
+    should(calledWithEventStoreId).be.exactly("123");
     should(events.length).be.exactly(0);
-    //should(storedEvents).be.exactly(events);
+    should(storedEvents).be.exactly(events);
   });
 
 
+  it('should route command to instantiated tictactoe game with event stream from store and return generated events, using mock style tests.',function(){
 
+    var jm = require('jsmockito').JsMockito;
+    jm.Integration.importTo(global);
+    /* global spy,when */
+
+    var mockStore = spy({
+      loadEvents : function(){
+      },
+      storeEvents : function(){
+      }
+    });
+
+    when(mockStore).loadEvents('123').thenReturn([]);
+
+    var mockTickTackToe = spy({
+      executeCommand : function(){
+
+      }
+    });
+
+    when(mockTickTackToe).executeCommand().thenReturn([]);
+
+
+    var commandHandlers =function(){
+      return mockTickTackToe
+    };
+    var boundedContext = require('./tictactoeBoundedContext')(mockStore, commandHandlers);
+
+    var emptyCommand = {
+      id: "123"
+    };
+
+    boundedContext.handleCommand(emptyCommand);
+
+    jm.verify(mockStore).loadEvents('123');
+    jm.verify(mockStore).storeEvents('123');
+
+    jm.verify(mockTickTackToe).executeCommand(emptyCommand);
 
   });
 
+
+});

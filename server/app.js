@@ -28,5 +28,5 @@ console.debug("Instantiated app");
 
 app.appName ="TicTacToe";
 
-// Expose app
+// Expose apsp
 exports = module.exports = app;
