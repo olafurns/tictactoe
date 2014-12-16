@@ -7,7 +7,7 @@
 
 var should = require('should');
 var app = require('../../app');
-var request = require('superest');
+var request = require('supertest');
 
 describe('POST /api/placeMove', function() {
 
