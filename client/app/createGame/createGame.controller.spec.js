@@ -10,7 +10,7 @@ describe('Controller: CreateGameCtrl', function () {
   beforeEach(function () {
     module(function ($provide) {
       $provide.value('guid', function () {
-        return '1337'
+        return '1337';
       });
     });
 
@@ -56,8 +56,8 @@ describe('Controller: CreateGameCtrl', function () {
     scope.createGame();
     httpBackend.flush();
 
-    expect(location.search()['gameId']).toBe('1337');
-    expect(location.search()['gameSymbol']).toBe('X');
+    expect(location.search().gameId).toBe('1337');
+    expect(location.search().gameSymbol).toBe('X');
 
   });
 });

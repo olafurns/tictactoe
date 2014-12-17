@@ -5,14 +5,6 @@ describe('Controller: TictactoeControllerCtrl', function () {
   // load the controller's module
   beforeEach(module('tictactoeApp'));
 
-  beforeEach(function(){
-    module(function($provide){
-      $provide.value('guid', function() {
-        return '0001';
-      });
-    });
-
-  });
 
   var TictactoeControllerCtrl, scope, httpBackend, http, location;
 
@@ -34,37 +26,7 @@ describe('Controller: TictactoeControllerCtrl', function () {
     httpBackend.verifyNoOutstandingRequest();
   });
   /* jshint ignore:end */
-  it('should post variables from scope for guid, name and userName and process resulting events and assign me to X', function () {
-    httpBackend.expectPOST('/api/createGame/', {
-      id : '0001',
-      cmd: 'CreateGame',
-      user: {
-        userName: 'Jesus',
-        symbol: 'X'
-      },
-      name: 'RiseOfTheDead',
-      timeStamp:'2014-12-02T00:00:01'
-    }).respond([
-      {
-        id: '0001',
-        event: 'GameCreated',
-        user: {
-          userName: 'Jesus',
-          symbol: 'X'
-        }
-    }]);
 
-    scope.name = 'RiseOfTheDead';
-    scope.userName = 'Jesus';
-
-    scope.createGame();
-    httpBackend.flush();
-
-    expect(scope.gameState.created).toBe(true);
-    expect(scope.gameState.me.symbol).toBe('X');
-    expect(location.search().gameId).toBe('0001');
-    expect(scope.joinUrl).toBe(location.absUrl() + '?joinGame=true');
-  });
 
   it('showJoinGame should be true if set as parameter', function () {
 
@@ -74,33 +36,7 @@ describe('Controller: TictactoeControllerCtrl', function () {
 
   });
 
-  it('should ask to join game if game id already in scope, and assign me to 0', function() {
-    httpBackend.expectPOST('/api/joinGame/', {
-      id: '1337',
-      cmd: 'JoinGame',
-      user: {
-        userName: 'Satan',
-        symbol: '0'
-      },
-      timeStamp:'2014-12-02T00:00:01'
-    }).respond([
-      {
-        event: 'GameCreated'
-      }
-    ]);
 
-    scope.gameState.id = '1337';
-    scope.name = 'RiseOfTheDead';
-    scope.userName = 'Satan';
-
-    scope.joinGame();
-    httpBackend.flush();
-
-
-    expect(scope.gameState.created).toBe(true);
-    expect(scope.gameState.me.symbol).toBe('0');
-
-  });
 
 
   it('should post move', function () {

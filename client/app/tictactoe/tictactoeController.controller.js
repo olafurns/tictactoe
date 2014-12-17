@@ -12,72 +12,31 @@ angular.module('tictactoeApp')
 
 function TictactoeController ($scope, $http, $location, guid, gameState  ) {
 
-  var vm = $scope;
 
-  vm.gameState = gameState;
 
-  vm.createGame = createGame;
-  vm.joinGame = joinGame;
-  vm.makeMove = makeMove;
-  vm.processEvents = processEvents;
-  vm.thenHandleEvents = thenHandleEvents;
-  vm.showJoinGame = showJoinGame;
+  $scope.gameState = gameState;
 
-  function createGame(){
-    var id = guid();
+  $scope.makeMove = makeMove;
+  $scope.processEvents = processEvents;
+  $scope.thenHandleEvents = thenHandleEvents;
+  $scope.showJoinGame = showJoinGame;
 
-    var user = {
-      'userName':$scope.userName,
-      'symbol': 'X'
-    };
-    var createPost = $http.post('/api/createGame/',{
-        'id': id,
-        'cmd':'CreateGame',
-        'user': user,
-        'name':$scope.name,
-        'timeStamp':'2014-12-02T00:00:01'
-      }
-    );
 
-    vm.thenHandleEvents(createPost);
-
-    createPost.then(function(response) {
-      $location.search('gameId', response.data[0].id);
-    });
-
-  vm.gameState.me = user;
-  }
-
-  vm.$watch(function(){
+  $scope.$watch(function(){
     return $location.search()['gameId']
   }, function(){
-    vm.joinUrl = $location.absUrl() + '?joinGame=true';
+    $scope.joinUrl = $location.absUrl() + '?joinGame=true';
   });
-
-
-  function joinGame() {
-    var user = {'userName': vm.userName, symbol: '0'}
-
-    var joinPostPromise = $http.post('/api/joinGame/', {
-      'id' : vm.gameState.id,
-      'cmd': 'JoinGame',
-      'user': user,
-      'timeStamp':'2014-12-02T00:00:01'
-    });
-
-    vm.thenHandleEvents(joinPostPromise);
-    vm.gameState.me = user;
-  }
 
   function showJoinGame(){
     return !!$location.search()['joinGame'];
   }
 
   function makeMove(coords) {
-    var user = vm.gameState.me;
+    var user = $scope.gameState.me;
 
     var makeMovePromise = $http.post('/api/makeMove/', {
-      'id': vm.gameState.id,
+      'id': $scope.gameState.id,
       'cmd': 'MakeMove',
       'user': user,
       'timeStamp':'2014-12-02T00:00:01',
@@ -87,18 +46,18 @@ function TictactoeController ($scope, $http, $location, guid, gameState  ) {
       }
     });
 
-    vm.thenHandleEvents(makeMovePromise);
+    $scope.thenHandleEvents(makeMovePromise);
 
-    vm.gameState.me = user;
+    $scope.gameState.me = user;
   }
   function processEvents(events){
-      vm.processedEvents = events;
+      $scope.processedEvents = events;
     }
 
   function thenHandleEvents(postPromise)
   {
     postPromise.then(function (data) {
-      vm.gameState.mutate(data.data);
+      $scope.gameState.mutate(data.data);
     })
   }
   }//End controller

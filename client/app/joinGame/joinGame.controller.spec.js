@@ -55,7 +55,7 @@ describe('Controller: JoinGameCtrl', function() {
 
     httpBackend.flush();
     //
-    expect(location.search()['gameSymbol']).toBe('0');
+    expect(location.search().gameSymbol).toBe('0');
 
   });
 

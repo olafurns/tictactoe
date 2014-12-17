@@ -7,9 +7,14 @@ angular
   .module('tictactoeApp')
   .controller('JoinGameCtrl', function($scope, $http, $location, gameState) {
 
-    var gameId = $location.search()['gameId'];
+    var gameId = $location.search().gameId;
 
-    var thenHandleEvents = thenHandleEvents;
+    function thenHandleEvents(postPromise) {
+      postPromise.then(function(data) {
+        gameState.mutate(data.data);
+        $location.search('gameSymbol', '0');
+      });
+    }
 
     thenHandleEvents($http.get('/api/gameHistory/' + gameId));
 
@@ -25,10 +30,6 @@ angular
       });
 
       thenHandleEvents(joinPostPromise);
-      joinPostPromise.then(function(response){
-        $location.search('gameSymbol', '0');
-
-      });
 
       gameState.me = user;
     };
@@ -36,10 +37,6 @@ angular
 
 
 
-    function thenHandleEvents(postPromise) {
-      postPromise.then(function(data) {
-        gameState.mutate(data.data);
-      })
-    };
+
 
   });
