@@ -8,7 +8,7 @@ describe('Controller: TictactoeControllerCtrl', function () {
   beforeEach(function(){
     module(function($provide){
       $provide.value('guid', function() {
-        return '0001'
+        return '0001';
       });
     });
 
@@ -62,7 +62,7 @@ describe('Controller: TictactoeControllerCtrl', function () {
 
     expect(scope.gameState.created).toBe(true);
     expect(scope.gameState.me.symbol).toBe('X');
-    expect(location.search()['gameId']).toBe('0001');
+    expect(location.search().gameId).toBe('0001');
     expect(scope.joinUrl).toBe(location.absUrl() + '?joinGame=true');
   });
 
@@ -90,8 +90,8 @@ describe('Controller: TictactoeControllerCtrl', function () {
     ]);
 
     scope.gameState.id = '1337';
-    scope.name = "RiseOfTheDead";
-    scope.userName = "Satan";
+    scope.name = 'RiseOfTheDead';
+    scope.userName = 'Satan';
 
     scope.joinGame();
     httpBackend.flush();
@@ -142,7 +142,7 @@ describe('Controller: TictactoeControllerCtrl', function () {
 
     expect(scope.gameState.myTurn).toBe(false);
 
-  })
+  });
 
 
 });

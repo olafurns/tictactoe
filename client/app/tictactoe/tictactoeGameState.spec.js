@@ -3,7 +3,7 @@
  */
 
 
-'use strict'
+'use strict';
 
 describe('Factory: TicTacToeState', function(){
 
@@ -12,7 +12,7 @@ describe('Factory: TicTacToeState', function(){
   beforeEach(module('tictactoeApp'));
 
   beforeEach(inject(function(_gameState_){
-    gameState = _gameState_
+    gameState = _gameState_;
 
   }));
 
@@ -109,7 +109,7 @@ describe('Factory: TicTacToeState', function(){
 
     expect(gameState.myTurn).toBe(true);
 
-  })
+  });
 
   it('Should mark myTurn false if last event was from my side.', function() {
     gameState.me = {symbol:'X'};
@@ -129,7 +129,7 @@ describe('Factory: TicTacToeState', function(){
 
     expect(gameState.myTurn).toBe(false);
 
-  })
+  });
 
 
 

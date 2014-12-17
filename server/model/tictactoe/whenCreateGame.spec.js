@@ -13,6 +13,7 @@ describe('create game command', function()
     var given = [];
 
     var when = {
+      id: '1337',
       cmd: "CreateGame",
       user: {
         userName: "Jesus"
@@ -22,6 +23,7 @@ describe('create game command', function()
     };
 
     var then = [{
+      id: '1337',
       event: "GameCreated",
       user: {
         userName: "Jesus"

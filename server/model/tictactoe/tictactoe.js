@@ -9,6 +9,7 @@ module.exports = function(history){
       var cmdHandler = {
         "CreateGame": function(cmd){
           return [{
+            id: cmd.id,
             event: "GameCreated",
             user: cmd.user,
             name: cmd.name,
@@ -18,6 +19,7 @@ module.exports = function(history){
         "JoinGame": function(cmd){
           if(gameState.gameFull()) {
             return [{
+              id: cmd.id,
               event: "FullGameJoinAttempted",
               user: cmd.user,
               name: cmd.name,
@@ -25,6 +27,7 @@ module.exports = function(history){
             }]
           }
           return [{
+            id: cmd.id,
             event:"GameJoined",
             user: cmd.user,
             name: cmd.name,
@@ -36,6 +39,7 @@ module.exports = function(history){
           if(gameState.spotTaken(cmd))
           {
             return [{
+              id: cmd.id,
               event: "SpotTaken",
               user: cmd.user,
               move: cmd.move,
@@ -46,6 +50,7 @@ module.exports = function(history){
           if(gameState.notPlayerTurn(cmd))
           {
             return [{
+              id: cmd.id,
               event: "NotPlayerTurn",
               user: cmd.user,
               move: cmd.move,
@@ -57,6 +62,7 @@ module.exports = function(history){
           if(gameState.gameWon())
           {
             return [{
+              id: cmd.id,
               event: "GameWon",
               user: cmd.user,
               move: cmd.move,
@@ -67,6 +73,7 @@ module.exports = function(history){
           if(gameState.gameDraw())
           {
             return [{
+              id: cmd.id,
               event: "GameDraw",
               user: cmd.user,
               move: cmd.move,
@@ -75,6 +82,7 @@ module.exports = function(history){
             }]
           }
           return[{
+            id: cmd.id,
             event:"MoveMade",
             user: cmd.user,
             move: cmd.move,

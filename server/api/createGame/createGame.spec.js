@@ -18,7 +18,7 @@ describe('POST /api/createGame', function() {
         userName: "Jesus"
       },
       name: "RiseOfTheDead",
-      timeStamp: "2014-12-02T11:29:29"
+      timeStamp: "2014-12-02T01:01:01"
     };
 
     var req = request(app);
