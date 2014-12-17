@@ -5,14 +5,13 @@
 'use strict';
 
 var express = require('express');
-var controller = require('../command.controller.js');
+var controller = require('../command.controller');
 
 module.exports = function(app) {
 
   var router = express.Router();
 
-  console.debug("Adding post to router");
-
+  console.debug("POSTING FAIL");
   router.post('/', controller.executeCommand);
 
   return {

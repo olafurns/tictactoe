@@ -29,7 +29,7 @@ describe('POST /api/placeMove', function() {
     var req = request(app);
 
     req
-      .post('api/makeMove')
+      .post('/api/makeMove')
       .type('json')
       .send(command)
       .end(function(err, res) {
@@ -42,3 +42,4 @@ describe('POST /api/placeMove', function() {
 
 
 });
+
