@@ -172,7 +172,8 @@ describe('make move command', function(){
 
   });
 
-  /* jshint ignore:end */
+
 
 });
 
+/* jshint ignore:end */
