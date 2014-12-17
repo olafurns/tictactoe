@@ -56,6 +56,7 @@ describe('Controller: CreateGameCtrl', function () {
     scope.createGame();
     httpBackend.flush();
 
+    expect(location.path()).toBe('/tictactoe');
     expect(location.search().gameId).toBe('1337');
     expect(location.search().gameSymbol).toBe('X');
 

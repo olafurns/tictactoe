@@ -16,6 +16,10 @@ angular.module('tictactoeApp', [
       .state('create', {
         url: '/',
         templateUrl:'/app/createGame/createGame.html'
+      })
+      .state('tictactoe', {
+        url:'/tictactoe',
+        templateUrl:'/app/tictactoe/tictactoe.html'
       });
 
 
