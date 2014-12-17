@@ -56,7 +56,7 @@ function TictactoeController ($scope, $http, $location, guid, gameState  ) {
 
 
   function joinGame() {
-    var user = {'username': vm.userName, symbol: 'O'}
+    var user = {'userName': vm.userName, symbol: '0'}
 
     var joinPostPromise = $http.post('/api/joinGame/', {
       'id' : vm.gameState.id,
@@ -76,7 +76,7 @@ function TictactoeController ($scope, $http, $location, guid, gameState  ) {
   function makeMove(coords) {
     var user = vm.gameState.me;
 
-    var makeMovePromise = $http.post('/api/makeMove', {
+    var makeMovePromise = $http.post('/api/makeMove/', {
       'id': vm.gameState.id,
       'cmd': 'MakeMove',
       'user': user,
@@ -104,7 +104,6 @@ function TictactoeController ($scope, $http, $location, guid, gameState  ) {
   }//End controller
 
   function gameState(){
-
     var gameState = {
       me: {},
       created: false,
@@ -118,10 +117,13 @@ function TictactoeController ($scope, $http, $location, guid, gameState  ) {
             gameState.created = true;
             gameState.id = event.id;
           },
-          'GameJoined': function(event, gameState) {
+          'GameJoined': function(event, gameState){
+          gameState.otherPlayer = event.user;
+        },
+          'MoveMade': function(event, gameState) {
             var coord = event.grid;
             gameState.board[coord] = event.move.symbol;
-            gameState.myTurn = event.move.side !== gameState.me.side;
+            gameState.myTurn = event.move.symbol !== gameState.me.symbol;
           }
         };
         _.each(events, function(ev){
