@@ -1,66 +1,66 @@
-/**
- * Created by olafurns on 17.12.2014.
- */
-
 'use strict';
+/* jshint ignore:start */
+describe('Controller: JoinGameCtrl', function () {
 
-describe('Controller: JoinGameCtrl', function() {
-
+  // load the controller's module
   beforeEach(module('tictactoeApp'));
 
-  var JoinGameCtrl, scope, httpBackend, location;
+  var JoinGameCtrl, scope;
+  var httpBackend;
+  var location;
 
+  // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope, $httpBackend, $location, $state) {
-
-    location = $location;
     httpBackend = $httpBackend;
+    location = $location;
+
+    $state.params['gameId'] = "123";
+
     scope = $rootScope.$new();
-
-    $state.params.gameId = '1337';
-
     JoinGameCtrl = $controller('JoinGameCtrl', {
       $scope: scope
     });
-
-
   }));
 
-
-  it('should ask to join game if gameid is already in scope and assign me to 0', function () {
-
-    httpBackend.expectGET('/api/gameHistory/1337')
-      .respond([{
-        event: 'GameCreated',
-        name: 'RiseOfTheDead',
-        id: '1337'
-      }]);
-    //
-    httpBackend.expectGET('/app/createGame/createGame.html').respond('');
-    httpBackend.expectGET('/app/tictactoe/tictactoe.html').respond('');
+  it('should ask to join game if game id already in scope, and assign me to O', function () {
+    httpBackend.expectGET('/api/gameHistory/123').respond( [{
+      event: "GameCreated",
+      name:"Game Number one",
+      id : "123"
+    }]);
+    httpBackend.expectGET("app/createGame/createGame.html").respond('');
 
     httpBackend.flush();
 
     httpBackend.expectPOST('/api/joinGame/', {
-      id: '1337',
-      cmd: 'JoinGame',
+      id: "123",
+      cmd: "JoinGame",
       user: {
-        userName: 'Jesus',
-        symbol: '0'
+        userName: "Gummi",
+        side: "O"
       },
-      timeStamp: '2014-12-02T00:00:01'
-    }).respond([{
-      event: 'GameJoined'
-    }]);
+      timeStamp: "2014-12-02T11:29:29"
+    }).respond([
+        {event: "GameJoined"}
+      ]
+    );
 
 
-    scope.userName = 'Jesus';
+    scope.userName = "Gummi";
+
     scope.joinGame();
 
+
+    httpBackend.expectGET('app/tictactoeController/tictactoe.html').respond('');
     httpBackend.flush();
 
-    expect(location.search().gameSymbol).toBe('0');
+
+    expect(location.search()['gameSide']).toBe('O');
+    expect(location.search()['gameId']).toBe('123');
+    expect(location.path()).toBe('/tictactoe');
 
   });
 
-});
 
+});
+/* jshint ignore:end */

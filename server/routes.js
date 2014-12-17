@@ -8,11 +8,11 @@ var errors = require('./components/errors');
 
 module.exports = function(app) {
 
-  // Insert routes belowss
-  app.use('/api/createGame', require('./api/createGame')(app).router);
+  // Insert routes below
+  app.use('/api/gameHistory', require('./api/gameHistory'));
   app.use('/api/joinGame', require('./api/joinGame')(app).router);
-  app.use('/api/makeMove', require('./api/makeMove')(app).router);
-  app.use('/api/gameHistory', require('./api/gameHistory')(app).router);
+  app.use('/api/placeMove', require('./api/placeMove')(app).router);
+  app.use('/api/createGame', require('./api/createGame')(app).router);
 
   // All undefined asset or api routes should return a 404
   app.route('/:url(api|auth|components|app|bower_components|assets)/*')

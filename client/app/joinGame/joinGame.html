@@ -1,11 +1,8 @@
-
-<div class="container" ng-controller="JoinGameCtrl">
-
-  <label for="userName">Username</label>
+<div class="container">
+  <label for="userName">UserName</label>
   <input id="userName" ng-model="userName">
 
   <div>
-    <button ng-click="joinGame()">Join Game</button>
+    <button id="joinGame" ng-click="joinGame()">Join Game</button>
   </div>
-  <pre>{{gameState | json}}</pre>
 </div>

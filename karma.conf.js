@@ -6,6 +6,14 @@ module.exports = function(config) {
     // base path, that will be used to resolve files and exclude
     basePath: '',
 
+    reporters: ['progress', 'junit'],
+
+    // the default configuration
+    junitReporter: {
+      outputFile: 'reports/test-results.xml',
+      suite: ''
+    },
+
     // testing framework to use (jasmine/mocha/qunit/...)
     frameworks: ['jasmine'],
 
@@ -36,7 +44,7 @@ module.exports = function(config) {
     preprocessors: {
       '**/*.jade': 'ng-jade2js',
       '**/*.html': 'html2js',
-      '**/*.coffee': 'coffee',
+      '**/*.coffee': 'coffee'
     },
 
     ngHtml2JsPreprocessor: {
@@ -71,14 +79,6 @@ module.exports = function(config) {
     // - PhantomJS
     // - IE (only Windows)
     browsers: ['PhantomJS'],
-
-    rreporters: ['progress', 'junit'],
-
-    // the default configuration
-    junitReporter: {
-      outputFile: 'test-results.xml',
-      suite: ''
-    },
 
 
     // Continuous Integration mode

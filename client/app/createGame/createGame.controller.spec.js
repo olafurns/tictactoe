@@ -1,22 +1,23 @@
 'use strict';
 
+/* jshint ignore:start */
 describe('Controller: CreateGameCtrl', function () {
 
-
-
+  // load the controller's module
   beforeEach(module('tictactoeApp'));
+
   var CreateGameCtrl, scope, httpBackend, location;
 
   beforeEach(function () {
     module(function ($provide) {
-      $provide.value('guid', function () {
-        return '1337';
+      $provide.value("guid", function () {
+        return "12345"
       });
     });
 
   });
 
-
+  // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope, $httpBackend, $location) {
     httpBackend = $httpBackend;
     location = $location;
@@ -29,36 +30,38 @@ describe('Controller: CreateGameCtrl', function () {
 
   it('should post variables from scope for guid, name and userName and process resulting events, and assign me to X', function () {
     httpBackend.expectPOST('/api/createGame/', {
-      id: '1337',
-      cmd: 'CreateGame',
+      id: "12345",
+      cmd: "CreateGame",
       user: {
-        userName: 'Jesus',
-        side: 'X'
+        userName: "Gummi",
+        side: "X"
       },
-      name: 'RiseOfTheDead',
-      timeStamp:'2014-12-02T00:00:01'
+      name: "TheSecondGame",
+      timeStamp: "2014-12-02T11:29:29"
     }).respond([
         {
-          id: '1337',
-          event: 'GameCreated',
+          id: "12345",
+          event: "GameCreated",
           user: {
-            userName: 'Jesus',
-            side: 'X'
+            userName: "Gummi",
+            side: "X"
           }
         }
       ]
     );
 
-    scope.name = 'RiseOfTheDead';
+    scope.name = "TheSecondGame";
 
-    scope.userName = 'Jesus';
+    scope.userName = "Gummi";
 
     scope.createGame();
     httpBackend.flush();
 
+    expect(location.search()['gameId']).toBe('12345');
+    expect(location.search()['gameSide']).toBe('X');
     expect(location.path()).toBe('/tictactoe');
-    expect(location.search().gameId).toBe('1337');
-    expect(location.search().gameSymbol).toBe('X');
 
   });
 });
+
+/* jshint ignore:end */

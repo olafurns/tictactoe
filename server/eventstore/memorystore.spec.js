@@ -1,66 +1,38 @@
-/**
- * Created by olafurns on 8.12.2014.
- */
-
-var mem = require('./memorystore');
+var memoryStore = require('./memorystore');
 var should = require('should');
 
-describe('Event stored in memory', function() {
+describe('In memory event store', function() {
+  it('Should return empty array for unknown id', function() {
 
-  var createGameEvent = {
-    id: "1010",
-    event: "GameCreated",
-    user: {
-      userName: "Jesus"
-    },
-    name: "RiseOfTheDead",
-    timeStamp:"2014-01-01T01:00:00"
-  };
+    var store = memoryStore();
 
-  var joinGameEvent = {
-    id: "1011",
-    event: "JoinGame",
-    user: {
-      userName: "God"
-    },
-    name: "RiseOfTheDead",
-    timeStamp:"2014-01-01T01:01:00"
-  };
-
-  it('should return an empty array for unknown id', function() {
-
-    var storage = mem();
-
-    var loadedEvents = storage.loadEvents('0000');
+    var loadedEvents = store.loadEvents('1234');
 
     should(loadedEvents.length).be.exactly(0);
     should(loadedEvents).be.instanceof(Array);
-  });
-
-  it('should return event already stored', function(){
-    var storage = mem();
-
-    storage.storeEvents('1010', [createGameEvent]);
-
-    var loadedEvents = storage.loadEvents('1010');
-
-    should(JSON.stringify(loadedEvents)).be.exactly(JSON.stringify([createGameEvent]));
 
   });
 
-  it('should add new stored events to previous stored events array', function() {
-    var storage = mem();
+  it('Should return events previously stored', function() {
 
-    storage.storeEvents('1010', [createGameEvent,joinGameEvent]);
+    var store = memoryStore();
 
-    var loadedEvents = storage.loadEvents('1010');
+    store.storeEvents('1234', [{"id":"1"}]);
 
+    var loadedEvents = store.loadEvents('1234');
 
-    should(loadedEvents).eql([createGameEvent,joinGameEvent]);
-    should(loadedEvents).not.eql([joinGameEvent,createGameEvent]);
-  })
-
+    should(loadedEvents).eql([{"id":"1"}]);
+  });
 
 
+  it('should append stored events to events previously stored',function(){
+    var store = memoryStore();
 
+    store.storeEvents('1234', [{"id":"1"}]);
+    store.storeEvents('1234', [{"id":"2"}]);
+
+    var loadedEvents = store.loadEvents('1234');
+
+    should(loadedEvents).eql([{"id":"1"},{"id":"2"}]);
+  });
 });

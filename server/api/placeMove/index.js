@@ -1,9 +1,7 @@
 'use strict';
 
 var express = require('express');
-
 var controller = require('../command.controller');
-
 
 module.exports = function(app){
 
@@ -12,8 +10,7 @@ module.exports = function(app){
   router.post('/', controller.executeCommand);
 
   return {
-    router:router 
+    router:router
   }
 
-}
-
+};
