@@ -1,0 +1,16 @@
+<div ng-controller="TictactoeController as vm">
+
+
+  <label for="name">Name</label>
+  <input id="name" ng-model="vm.name">
+
+  <label for="userName">UserName</label>
+  <input id="userName" ng-model="vm.userName">
+
+
+  <div>
+    {{name}}
+
+    <button ng-click="createGame()"></button>
+  </div>
+</div>
