@@ -42,7 +42,7 @@ module.exports = function(history){
               name: cmd.name,
               timeStamp: cmd.timeStamp
             }]
-          };
+          }
           if(gameState.notPlayerTurn(cmd))
           {
             return [{
@@ -63,7 +63,7 @@ module.exports = function(history){
               name: cmd.name,
               timeStamp: cmd.timeStamp
             }]
-          };
+          }
           if(gameState.gameDraw())
           {
             return [{
@@ -73,7 +73,7 @@ module.exports = function(history){
               name: cmd.name,
               timeStamp: cmd.timeStamp
             }]
-          };
+          }
           return[{
             event:"MoveMade",
             user: cmd.user,

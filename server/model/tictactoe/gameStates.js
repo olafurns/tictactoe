@@ -27,8 +27,9 @@ module.exports = function(history){
 
   function notPlayerTurn(event)
   {
+    var lastPlayer;
     if(history[history.length-1].event === 'MoveMade')
-      var lastPlayer = history[history.length-1].user.userName;
+      lastPlayer = history[history.length-1].user.userName;
 
     return lastPlayer === event.user.userName;
   }
