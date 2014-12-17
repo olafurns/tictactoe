@@ -2,7 +2,7 @@
  * Created by olafurns on 13.12.2014.
  */
 
-'use strict'
+'use strict';
 
 describe('Directive: tictactoe', function() {
 
@@ -24,4 +24,4 @@ describe('Directive: tictactoe', function() {
 
   }));
 
-})
+});

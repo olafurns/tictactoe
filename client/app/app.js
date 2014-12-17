@@ -23,11 +23,10 @@ angular.module('tictactoeApp', [
     }
 
     function calc() {
-
       return s4() + s4() + '-' + s4() + '-' + s4() + '-' +  s4() + '-' + s4() + s4() + s4();
-    };
+    }
 
-    console.debug("guid", calculate());
+    console.debug('guid', calc());
 
-    return calculate();
+    return calc();
   });

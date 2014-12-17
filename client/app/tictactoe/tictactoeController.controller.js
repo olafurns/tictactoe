@@ -1,5 +1,7 @@
-'use strict';
+
 (function() {
+  /* jshint ignore:start */
+  'use strict';
 
 angular.module('tictactoeApp')
   .controller('TictactoeController', TictactoeController);
@@ -16,14 +18,14 @@ function TictactoeController ($scope, $http) {
 
   function createGame(){
       var postPromise = $http.post('/api/createGame/',{
-          "id":'1337',
-          "cmd":'CreateGame',
-          "user":
+          'id':'1337',
+          'cmd':'CreateGame',
+          'user':
           {
-            "userName":$scope.userName
+            'userName':$scope.userName
           },
-          "name":$scope.name,
-          "timeStamp":'2014-12-02T0:0:01'
+          'name':$scope.name,
+          'timeStamp':'2014-12-02T00:00:01'
         }
       );
 
@@ -37,8 +39,8 @@ function TictactoeController ($scope, $http) {
       vm.processedEvents = events;
     }
 
+  }
 
-
-  };
-
+  /* jshint ignore:end */
 })();
+

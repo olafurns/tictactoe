@@ -18,28 +18,29 @@ describe('Controller: TictactoeControllerCtrl', function () {
     });
   }));
 
+  /* jshint ignore:start */
   afterEach(function () {
     httpBackend.verifyNoOutstandingExpectation();
     httpBackend.verifyNoOutstandingRequest();
   });
-
+  /* jshint ignore:end */
   it('should post variables from scope for name and userName and process resulting events', function () {
     httpBackend.expectPOST('/api/createGame/', {
-      id : "1337",
-      cmd: "CreateGame",
+      id : '1337',
+      cmd: 'CreateGame',
       user: {
-        userName: "Jesus"
+        userName: 'Jesus'
       },
-      name: "RiseOfTheDead",
-      timeStamp:"2014-12-02T0:0:01"
+      name: 'RiseOfTheDead',
+      timeStamp:'2014-12-02T00:00:01'
     }).respond({
       response: [
         {}
       ]
     });
 
-    scope.name ="RiseOfTheDead";
-    scope.userName = "Jesus";
+    scope.name = 'RiseOfTheDead';
+    scope.userName = 'Jesus';
 
     scope.createGame();
     httpBackend.flush();
