@@ -4,7 +4,7 @@
 
 'use strict';
 
-
+/*
 
 angular.module('tictactoeApp')
   .controller('CreateGameCtrl', function($scope, $http, $location, guid){
@@ -37,3 +37,4 @@ angular.module('tictactoeApp')
 
 
   });
+*/
