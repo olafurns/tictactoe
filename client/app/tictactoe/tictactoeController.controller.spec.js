@@ -5,12 +5,22 @@ describe('Controller: TictactoeControllerCtrl', function () {
   // load the controller's module
   beforeEach(module('tictactoeApp'));
 
-  var TictactoeControllerCtrl, scope, httpBackend, http;
+  beforeEach(function(){
+    module(function($provide){
+      $provide.value('guid', function() {
+        return '0001'
+      });
+    });
 
-  // Initialize the controller and a mock scope
-  beforeEach(inject(function ($injector, $controller, $rootScope, $http) {
+  });
+
+  var TictactoeControllerCtrl, scope, httpBackend, http, location;
+
+
+  beforeEach(inject(function ($injector, $controller, $rootScope, $http, $location) {
     http = $http;
     httpBackend = $injector.get('$httpBackend');
+    location = $location;
 
     scope = $rootScope.$new();
     TictactoeControllerCtrl = $controller('TictactoeController', {
@@ -24,20 +34,25 @@ describe('Controller: TictactoeControllerCtrl', function () {
     httpBackend.verifyNoOutstandingRequest();
   });
   /* jshint ignore:end */
-  it('should post variables from scope for name and userName and process resulting events', function () {
+  it('should post variables from scope for guid, name and userName and process resulting events and assign me to X', function () {
     httpBackend.expectPOST('/api/createGame/', {
-      id : '1337',
+      id : '0001',
       cmd: 'CreateGame',
       user: {
-        userName: 'Jesus'
+        userName: 'Jesus',
+        symbol: 'X'
       },
       name: 'RiseOfTheDead',
       timeStamp:'2014-12-02T00:00:01'
-    }).respond({
-      response: [
-        {}
-      ]
-    });
+    }).respond([
+      {
+        id: '0001',
+        event: 'GameCreated',
+        user: {
+          userName: 'Jesus',
+          symbol: 'X'
+        }
+    }]);
 
     scope.name = 'RiseOfTheDead';
     scope.userName = 'Jesus';
@@ -45,8 +60,22 @@ describe('Controller: TictactoeControllerCtrl', function () {
     scope.createGame();
     httpBackend.flush();
 
-    expect(scope.processedEvents.length).toBe(1);
+    expect(scope.gameState.created).toBe(true);
+    expect(scope.gameState.me.symbol).toBe('X');
+    expect(location.search()['gameId']).toBe('0001');
+    expect(scope.joinUrl).toBe(location.absUrl() + '?joinGame=true');
+  });
+
+  it('showJoinGame should be true if set as parameter', function () {
+
+    location.search('joinGame', true);
+    location.search('gameId', '1337');
+    expect(scope.showJoinGame()).toBe(true);
 
   });
+
+
+
+
 });
 

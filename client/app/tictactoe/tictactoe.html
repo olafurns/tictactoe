@@ -12,12 +12,12 @@
 
 
       <div>
-        {{name}}
-        <button ng-click="createGame()"></button>
+        {{vm.name}}
+        <button ng-click="vm.createGame()"></button>
       </div>
     </div>
 
-  <div ng-show="gameState.created">
-    <a href="{{joinUrl}}">Join Game</a>
+  <div ng-show="vm.gameState.created">
+    <a href="{{vm.joinUrl}}">Join Game</a>
   </div>
 </div>
