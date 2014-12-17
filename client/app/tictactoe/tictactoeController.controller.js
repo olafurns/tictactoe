@@ -23,9 +23,9 @@ function TictactoeController ($scope, $http, $location, guid, gameState  ) {
 
 
   $scope.$watch(function(){
-    return $location.search()['gameId']
-  }, function(){
-    $scope.joinUrl = $location.absUrl() + '?joinGame=true';
+    return $location.search()['gameId'];
+  }, function(value){
+    value && ($scope.gameState.me.symbol = value);
   });
 
   function showJoinGame(){

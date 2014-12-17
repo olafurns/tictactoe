@@ -10,13 +10,13 @@ describe('Controller: JoinGameCtrl', function() {
 
   var JoinGameCtrl, scope, httpBackend, location;
 
-  beforeEach(inject(function ($controller, $rootScope, $httpBackend, $location) {
+  beforeEach(inject(function ($controller, $rootScope, $httpBackend, $location, $state) {
 
     location = $location;
     httpBackend = $httpBackend;
     scope = $rootScope.$new();
 
-    location.search('gameId', '1337');
+    $state.params.gameId = '1337';
 
     JoinGameCtrl = $controller('JoinGameCtrl', {
       $scope: scope
@@ -34,6 +34,9 @@ describe('Controller: JoinGameCtrl', function() {
         name: 'RiseOfTheDead',
         id: '1337'
       }]);
+    //
+    httpBackend.expectGET('/app/createGame/createGame.html').respond('');
+    httpBackend.expectGET('/app/tictactoe/tictactoe.html').respond('');
 
     httpBackend.flush();
 
@@ -54,9 +57,10 @@ describe('Controller: JoinGameCtrl', function() {
     scope.joinGame();
 
     httpBackend.flush();
-    //
+
     expect(location.search().gameSymbol).toBe('0');
 
   });
 
 });
+

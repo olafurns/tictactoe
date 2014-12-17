@@ -5,18 +5,18 @@
 
 angular
   .module('tictactoeApp')
-  .controller('JoinGameCtrl', function($scope, $http, $location, gameState) {
+  .controller('JoinGameCtrl', function($scope, $http, $location,$state, gameState) {
 
-    var gameId = $location.search().gameId;
 
     function thenHandleEvents(postPromise) {
       postPromise.then(function(data) {
+        $location.path('/tictactoe');
         gameState.mutate(data.data);
         $location.search('gameSymbol', '0');
       });
     }
 
-    thenHandleEvents($http.get('/api/gameHistory/' + gameId));
+    thenHandleEvents($http.get('/api/gameHistory/' + $state.params.gameId));
 
     $scope.joinGame = function() {
 
