@@ -1,8 +1,8 @@
-<div ng-controller="TictactoeController">
+<div ng-controller="TictactoeController as vm">
 
-  <h3>{{name ||'NoName'}}</h3>
+  <h3>{{vm.name ||'NoName'}}</h3>
 
-  <div ng-hide="gameState.created">
+  <div ng-hide="vm.gameState.created">
 
       <label for="name">Name</label>
       <input id="name" ng-model="vm.name">
