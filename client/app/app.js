@@ -9,14 +9,14 @@ angular.module('tictactoeApp', [
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
 
-    /*$stateProvider
+    $stateProvider
       .state('join', {
       url: '/join/:gameId',
       templateUrl:'/app/joinGame/joinGame.html'})
       .state('create', {
         url: '/',
         templateUrl:'/app/createGame/createGame.html'
-      });*/
+      });
 
 
     $urlRouterProvider
