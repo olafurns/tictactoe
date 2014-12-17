@@ -121,7 +121,7 @@ function TictactoeController ($scope, $http, $location, guid, gameState  ) {
           gameState.otherPlayer = event.user;
         },
           'MoveMade': function(event, gameState) {
-            var coord = event.grid;
+            var coord = event.move.grid;
             gameState.board[coord] = event.move.symbol;
             gameState.myTurn = event.move.symbol !== gameState.me.symbol;
           }
