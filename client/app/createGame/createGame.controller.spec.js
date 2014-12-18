@@ -10,8 +10,8 @@ describe('Controller: CreateGameCtrl', function () {
 
   beforeEach(function () {
     module(function ($provide) {
-      $provide.value("guid", function () {
-        return "12345"
+      $provide.value('guid', function () {
+        return '12345'
       });
     });
 
@@ -30,29 +30,29 @@ describe('Controller: CreateGameCtrl', function () {
 
   it('should post variables from scope for guid, name and userName and process resulting events, and assign me to X', function () {
     httpBackend.expectPOST('/api/createGame/', {
-      id: "12345",
-      cmd: "CreateGame",
+      id: '12345',
+      cmd: 'CreateGame',
       user: {
-        userName: "Gummi",
-        side: "X"
+        userName: 'Jesus',
+        side: 'X'
       },
-      name: "TheSecondGame",
-      timeStamp: "2014-12-02T11:29:29"
+      name: 'TheSecondGame',
+      timeStamp: '2014-12-02T11:29:29'
     }).respond([
         {
-          id: "12345",
-          event: "GameCreated",
+          id: '12345',
+          event: 'GameCreated',
           user: {
-            userName: "Gummi",
-            side: "X"
+            userName: 'Jesus',
+            side: 'X'
           }
         }
       ]
     );
 
-    scope.name = "TheSecondGame";
+    scope.name = 'TheSecondGame';
 
-    scope.userName = "Gummi";
+    scope.userName = 'Jesus';
 
     scope.createGame();
     httpBackend.flush();

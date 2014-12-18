@@ -7,13 +7,13 @@ var request = require('supertest');
 describe('POST /api/createGame', function() {
   it('should respond with event in JSON array', function(done) {
     var command =     {
-      id : "123",
-      cmd: "CreateGame",
+      id : '123',
+      cmd: 'CreateGame',
       user: {
-        userName: "Gulli"
+        userName: 'God'
       },
-      name: "TheFirstGame",
-      timeStamp: "2014-12-02T11:29:29"
+      name: 'TheFirstGame',
+      timeStamp: '2014-12-02T11:29:29'
     };
 
     var req = request(app);

@@ -34,13 +34,13 @@ describe('tictactoe game context using stubs.', function() {
     var boundedContext = require('./tictactoeBoundedContext')(eventStoreStub, commandHandlers);
 
     var emptyCommand = {
-      id: "123"
+      id: '1337'
     };
 
     var events = boundedContext.handleCommand(emptyCommand);
 
-    should(executedCommand.id).be.exactly("123");
-    should(calledWithEventStoreId).be.exactly("123");
+    should(executedCommand.id).be.exactly('1337');
+    should(calledWithEventStoreId).be.exactly('1337');
     should(events.length).be.exactly(0);
     should(storedEvents).be.exactly(events);
   });
@@ -59,7 +59,7 @@ describe('tictactoe game context using stubs.', function() {
       }
     });
 
-    when(mockStore).loadEvents('123').thenReturn([]);
+    when(mockStore).loadEvents('1337').thenReturn([]);
 
     var mockTickTackToe = spy({
       executeCommand : function(){
@@ -76,13 +76,13 @@ describe('tictactoe game context using stubs.', function() {
     var boundedContext = require('./tictactoeBoundedContext')(mockStore, commandHandlers);
 
     var emptyCommand = {
-      id: "123"
+      id: '1337'
     };
 
     boundedContext.handleCommand(emptyCommand);
 
-    jm.verify(mockStore).loadEvents('123');
-    jm.verify(mockStore).storeEvents('123');
+    jm.verify(mockStore).loadEvents('1337');
+    jm.verify(mockStore).storeEvents('1337');
 
     jm.verify(mockTickTackToe).executeCommand(emptyCommand);
 

@@ -8,31 +8,31 @@ describe('join game command', function() {
   it('should emit game joined event', function(){
 
     var given = [{
-        event: "GameCreated",
+        event: 'GameCreated',
         user: {
-          userName: "Gulli"
+          userName: 'Jesus'
         },
-        name: "TheFirstGame",
-        timeStamp: "2014-12-02T11:29:29"
+        name: 'TheFirstGame',
+        timeStamp: '2014-12-02T11:29:29'
       }
     ];
     var when =
     {
-      cmd: "JoinGame",
+      cmd: 'JoinGame',
       user: {
-        userName: "Gummi"
+        userName: 'God'
       },
-      name: "TheFirstGame",
-      timeStamp: "2014-12-02T11:29:29"
+      name: 'TheFirstGame',
+      timeStamp: '2014-12-02T11:29:29'
     };
     var then = [
       {
-        event: "GameJoined",
+        event: 'GameJoined',
         user: {
-          userName: "Gummi"
+          userName: 'God'
         },
-        name: "TheFirstGame",
-        timeStamp: "2014-12-02T11:29:29"
+        name: 'TheFirstGame',
+        timeStamp: '2014-12-02T11:29:29'
       }
     ];
 
@@ -43,40 +43,40 @@ describe('join game command', function() {
   it('should emit FullGameJoinAttempted event when game full', function(){
 
     var given = [{
-      event: "GameCreated",
+      event: 'GameCreated',
       user: {
-        userName: "Gulli"
+        userName: 'Jesus'
       },
-      name: "TheFirstGame",
-      timeStamp: "2014-12-02T11:29:29"
+      name: 'TheFirstGame',
+      timeStamp: '2014-12-02T11:29:29'
     },
       {
-      event: "GameJoined",
+      event: 'GameJoined',
       user: {
-        userName: "Gummi"
+        userName: 'God'
       },
-      name: "TheFirstGame",
-      timeStamp: "2014-12-02T11:29:29"
+      name: 'TheFirstGame',
+      timeStamp: '2014-12-02T11:29:29'
     }
 
     ];
     var when =
     {
-      cmd: "JoinGame",
+      cmd: 'JoinGame',
       user: {
-        userName: "Gummi"
+        userName: 'God'
       },
-      name: "TheFirstGame",
-      timeStamp: "2014-12-02T11:29:29"
+      name: 'TheFirstGame',
+      timeStamp: '2014-12-02T11:29:29'
     };
     var then = [
       {
-        event: "FullGameJoinAttempted",
+        event: 'FullGameJoinAttempted',
         user: {
-          userName: "Gummi"
+          userName: 'God'
         },
-        name: "TheFirstGame",
-        timeStamp: "2014-12-02T11:29:29"
+        name: 'TheFirstGame',
+        timeStamp: '2014-12-02T11:29:29'
       }
 
     ];

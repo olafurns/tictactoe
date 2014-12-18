@@ -7,13 +7,13 @@ var request = require('supertest');
 describe('POST /api/joinGame', function() {
   it('should respond with event in JSON array', function(done) {
     var command =     {
-      id : "123",
-      cmd: "JoinGame",
+      id : '123',
+      cmd: 'JoinGame',
       user: {
-        userName: "Gulli"
+        userName: 'Jesus'
       },
-      name: "TheFirstGame",
-      timeStamp: "2014-12-02T11:29:29"
+      name: 'TheFirstGame',
+      timeStamp: '2014-12-02T11:29:29'
     };
 
 

@@ -7,13 +7,13 @@ var request = require('supertest');
 describe('POST /api/placeMove', function() {
   it('should respond with event in JSON array', function(done) {
     var command =     {
-      id : "123",
-      cmd: "PlaceMove",
+      id : '123',
+      cmd: 'PlaceMove',
       user: {
-        userName: "Gulli"
+        userName: 'God'
       },
-      name: "TheFirstGame",
-      timeStamp: "2014-12-02T11:29:29",
+      name: 'TheFirstGame',
+      timeStamp: '2014-12-02T11:29:29',
       move:{
         coordinates:[0,0],
         side:['X']

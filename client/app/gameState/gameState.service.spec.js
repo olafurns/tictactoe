@@ -17,44 +17,44 @@ describe('Factory: TictacToeState', function () {
 
   it('Should add other player to game state when gameJoined', function () {
     gameState.mutate([{
-        event: "GameJoined",
+        event: 'GameJoined',
         user: {
-          userName: "Gummi"
+          userName: 'Jesus'
         },
-        name: "TheFirstGame",
-        timeStamp: "2014-12-02T11:29:29"
+        name: 'TheFirstGame',
+        timeStamp: '2014-12-02T11:29:29'
       }]
     );
 
-    expect(gameState.joiningUser.userName).toBe("Gummi");
+    expect(gameState.joiningUser.userName).toBe('Jesus');
   });
 
   it('Should store game id and name from game created in game state.', function () {
     gameState.mutate([{
-        event: "GameCreated",
-        id: "198299",
+        event: 'GameCreated',
+        id: '198299',
         user: {
-          userName: "Gummi"
+          userName: 'Jesus'
         },
-        name: "TheFirstGame",
-        timeStamp: "2014-12-02T11:29:29"
+        name: 'TheFirstGame',
+        timeStamp: '2014-12-02T11:29:29'
       }]
     );
 
-    expect(gameState.id).toBe("198299");
-    expect(gameState.name).toBe("TheFirstGame");
-    expect(gameState.creatingUser.userName).toBe("Gummi");
+    expect(gameState.id).toBe('198299');
+    expect(gameState.name).toBe('TheFirstGame');
+    expect(gameState.creatingUser.userName).toBe('Jesus');
   });
 
   it('Should add moves 0,1 to game board', function () {
 
     gameState.mutate([{
-        event: "MovePlaced",
+        event: 'MovePlaced',
         user: {
-          userName: "Gummi"
+          userName: 'Jesus'
         },
-        name: "TheFirstGame",
-        timeStamp: "2014-12-02T11:29:29",
+        name: 'TheFirstGame',
+        timeStamp: '2014-12-02T11:29:29',
         move: {
           coordinates: [0, 1],
           side: 'X'
@@ -62,19 +62,19 @@ describe('Factory: TictacToeState', function () {
       }]
     );
 
-    expect(gameState.board[0][1]).toBe("X");
+    expect(gameState.board[0][1]).toBe('X');
 
   });
 
   it('Should add move 2,2 to board.', function () {
 
     gameState.mutate([{
-        event: "MovePlaced",
+        event: 'MovePlaced',
         user: {
-          userName: "Gummi"
+          userName: 'Jesus'
         },
-        name: "TheFirstGame",
-        timeStamp: "2014-12-02T11:29:29",
+        name: 'TheFirstGame',
+        timeStamp: '2014-12-02T11:29:29',
         move: {
           coordinates: [2, 2],
           side: 'X'
@@ -82,19 +82,19 @@ describe('Factory: TictacToeState', function () {
       }]
     );
 
-    expect(gameState.board[2][2]).toBe("X");
+    expect(gameState.board[2][2]).toBe('X');
 
   });
 
   it('Should mark nextTurn as opposite from last event.', function () {
     gameState.me = {side: 'O'};
     gameState.mutate([{
-        event: "MovePlaced",
+        event: 'MovePlaced',
         user: {
-          userName: "Gummi"
+          userName: 'Jesus'
         },
-        name: "TheFirstGame",
-        timeStamp: "2014-12-02T11:29:29",
+        name: 'TheFirstGame',
+        timeStamp: '2014-12-02T11:29:29',
         move: {
           coordinates: [2, 2],
           side: 'X'
@@ -108,12 +108,12 @@ describe('Factory: TictacToeState', function () {
   it('Nextturn should default to X', function () {
     gameState.me = {side: 'X'};
     gameState.mutate([{
-        event: "GameCreated",
+        event: 'GameCreated',
         user: {
-          userName: "Gummi"
+          userName: 'Jesus'
         },
-        name: "TheFirstGame",
-        timeStamp: "2014-12-02T11:29:29"
+        name: 'TheFirstGame',
+        timeStamp: '2014-12-02T11:29:29'
       }]
     );
 
@@ -123,28 +123,28 @@ describe('Factory: TictacToeState', function () {
   it('GameWon should set nextTurn to GameOver',function(){
     gameState.me = {side: 'X'};
     gameState.mutate([{
-        event: "GameWon",
+        event: 'GameWon',
         user: {
-          userName: "Gummi"
+          userName: 'Jesus'
         },
-        name: "TheFirstGame",
-        timeStamp: "2014-12-02T11:29:29"
+        name: 'TheFirstGame',
+        timeStamp: '2014-12-02T11:29:29'
       }]
     );
 
     expect(gameState.nextTurn).toBe('GameOver');
-    expect(gameState.winner.userName).toBe("Gummi");
+    expect(gameState.winner.userName).toBe('Jesus');
   });
 
   it('GameDraw should set nextTurn to GameOver',function(){
     gameState.me = {side: 'X'};
     gameState.mutate([{
-        event: "GameDraw",
+        event: 'GameDraw',
         user: {
-          userName: "Gummi"
+          userName: 'Jesus'
         },
-        name: "TheFirstGame",
-        timeStamp: "2014-12-02T11:29:29"
+        name: 'TheFirstGame',
+        timeStamp: '2014-12-02T11:29:29'
       }]
     );
 

@@ -14,7 +14,7 @@ describe('Controller: JoinGameCtrl', function () {
     httpBackend = $httpBackend;
     location = $location;
 
-    $state.params['gameId'] = "123";
+    $state.params['gameId'] = '123';
 
     scope = $rootScope.$new();
     JoinGameCtrl = $controller('JoinGameCtrl', {
@@ -24,29 +24,29 @@ describe('Controller: JoinGameCtrl', function () {
 
   it('should ask to join game if game id already in scope, and assign me to O', function () {
     httpBackend.expectGET('/api/gameHistory/123').respond( [{
-      event: "GameCreated",
-      name:"Game Number one",
-      id : "123"
+      event: 'GameCreated',
+      name:'Game Number one',
+      id : '123'
     }]);
-    httpBackend.expectGET("app/createGame/createGame.html").respond('');
+    httpBackend.expectGET('app/createGame/createGame.html').respond('');
 
     httpBackend.flush();
 
     httpBackend.expectPOST('/api/joinGame/', {
-      id: "123",
-      cmd: "JoinGame",
+      id: '123',
+      cmd: 'JoinGame',
       user: {
-        userName: "Gummi",
-        side: "O"
+        userName: 'Jesus',
+        side: 'O'
       },
-      timeStamp: "2014-12-02T11:29:29"
+      timeStamp: '2014-12-02T11:29:29'
     }).respond([
-        {event: "GameJoined"}
+        {event: 'GameJoined'}
       ]
     );
 
 
-    scope.userName = "Gummi";
+    scope.userName = 'Jesus';
 
     scope.joinGame();
 

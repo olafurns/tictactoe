@@ -9,20 +9,20 @@ module.exports = function(history){
     executeCommand: function(cmd){
 
       var cmdHandlers = {
-        "CreateGame": function (cmd) {
+        'CreateGame': function (cmd) {
           return [{
             id: cmd.id,
-            event: "GameCreated",
+            event: 'GameCreated',
             user: cmd.user,
             name: cmd.name,
             timeStamp: cmd.timeStamp
           }]
         },
-        "JoinGame": function (cmd) {
+        'JoinGame': function (cmd) {
           if(gameState.gameFull()){
             return [{
               id: cmd.id,
-              event: "FullGameJoinAttempted",
+              event: 'FullGameJoinAttempted',
               user: cmd.user,
               name: cmd.name,
               timeStamp: cmd.timeStamp
@@ -31,18 +31,18 @@ module.exports = function(history){
 
           return [{
             id: cmd.id,
-            event: "GameJoined",
+            event: 'GameJoined',
             user: cmd.user,
             name: cmd.name,
             timeStamp: cmd.timeStamp
           }];
         },
-        "PlaceMove": function(cmd){
+        'PlaceMove': function(cmd){
           if(gameState.occupied(cmd.move.coordinates))
           {
             return [{
               id: cmd.id,
-              event:"IllegalMove",
+              event:'IllegalMove',
               user: cmd.user,
               name:cmd.name,
               timeStamp:cmd.timeStamp,
@@ -53,7 +53,7 @@ module.exports = function(history){
 
           var events = [{
             id: cmd.id,
-            event: "MovePlaced",
+            event: 'MovePlaced',
             user: cmd.user,
             name: cmd.name,
             timeStamp: cmd.timeStamp,
@@ -64,7 +64,7 @@ module.exports = function(history){
             events.push(
               {
                 id: cmd.id,
-                event: "GameWon",
+                event: 'GameWon',
                 user: cmd.user,
                 name: cmd.name,
                 timeStamp: cmd.timeStamp
@@ -76,7 +76,7 @@ module.exports = function(history){
             events.push(
               {
                 id: cmd.id,
-                event: "GameDraw",
+                event: 'GameDraw',
                 user: cmd.user,
                 name: cmd.name,
                 timeStamp: cmd.timeStamp

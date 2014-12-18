@@ -8,10 +8,10 @@ module.exports = function(history){
   var moveCount=0;
 
   function processEvent(event) {
-    if (event.event === "GameJoined") {
+    if (event.event === 'GameJoined') {
       gameFull = true;
     }
-    if (event.event === "MovePlaced") {
+    if (event.event === 'MovePlaced') {
       var point = event.move.side==='X'? 1 : -1;
       var row = event.move.coordinates[0];
       var col = event.move.coordinates[1];

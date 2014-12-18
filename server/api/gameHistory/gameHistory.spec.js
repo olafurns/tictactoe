@@ -17,12 +17,12 @@ describe('GET /api/gameHistory', function() {
         res.body.should.be.instanceof(Array);
         should(res.body).eql(
           [{
-              "event": "GameCreated",
-              "id": "123",
-              "name": "TheFirstGame",
-              "timeStamp": "2014-12-02T11:29:29",
-              "user": {
-                "userName": "Gulli"
+              'event': 'GameCreated',
+              'id': '123',
+              'name': 'TheFirstGame',
+              'timeStamp': '2014-12-02T11:29:29',
+              'user': {
+                'userName': 'God'
               }
           }] );
         done();

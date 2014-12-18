@@ -4,31 +4,31 @@ var _ = require('lodash');
 var tictactoe = require('./tictactoe')
 
 var createEvent = {
-  event: "GameCreated",
+  event: 'GameCreated',
   user: {
-    userName: "Gulli"
+    userName: 'Jesus'
   },
-  name: "TheFirstGame",
-  timeStamp: "2014-12-02T11:29:29"
+  name: 'TheFirstGame',
+  timeStamp: '2014-12-02T11:29:29'
 };
 
 var joinEvent = {
-  event: "GameJoined",
+  event: 'GameJoined',
   user: {
-    userName: "Gummi"
+    userName: 'God'
   },
-  name: "TheFirstGame",
-  timeStamp: "2014-12-02T11:29:29"
+  name: 'TheFirstGame',
+  timeStamp: '2014-12-02T11:29:29'
 };
 
 function moveEvent(coordinates, side) {
   return {
-    event: "MovePlaced",
+    event: 'MovePlaced',
     user: {
-      userName: "Gummi"
+      userName: 'God'
     },
-    name: "TheFirstGame",
-    timeStamp: "2014-12-02T11:29:29",
+    name: 'TheFirstGame',
+    timeStamp: '2014-12-02T11:29:29',
     move: {
       coordinates: coordinates,
       side: side
@@ -54,12 +54,12 @@ describe('place move command', function () {
     ];
     when =
     {
-      cmd: "PlaceMove",
+      cmd: 'PlaceMove',
       user: {
-        userName: "Gummi"
+        userName: 'God'
       },
-      name: "TheFirstGame",
-      timeStamp: "2014-12-02T11:29:29",
+      name: 'TheFirstGame',
+      timeStamp: '2014-12-02T11:29:29',
       move:{
         coordinates:[0,0],
         side:'X'
@@ -79,12 +79,12 @@ describe('place move command', function () {
 
     when =
     {
-      cmd: "PlaceMove",
+      cmd: 'PlaceMove',
       user: {
-        userName: "Gummi"
+        userName: 'God'
       },
-      name: "TheFirstGame",
-      timeStamp: "2014-12-02T11:29:29",
+      name: 'TheFirstGame',
+      timeStamp: '2014-12-02T11:29:29',
       move:{
         coordinates:[0,0],
         side:'X'
@@ -92,12 +92,12 @@ describe('place move command', function () {
     };
     then = [
       {
-        event: "IllegalMove",
+        event: 'IllegalMove',
         user: {
-          userName: "Gummi"
+          userName: 'God'
         },
-        name: "TheFirstGame",
-        timeStamp: "2014-12-02T11:29:29",
+        name: 'TheFirstGame',
+        timeStamp: '2014-12-02T11:29:29',
         move:{
           coordinates:[0,0],
           side:'X'
@@ -116,12 +116,12 @@ describe('place move command', function () {
 
     when =
     {
-      cmd: "PlaceMove",
+      cmd: 'PlaceMove',
       user: {
-        userName: "Gummi"
+        userName: 'God'
       },
-      name: "TheFirstGame",
-      timeStamp: "2014-12-02T11:29:29",
+      name: 'TheFirstGame',
+      timeStamp: '2014-12-02T11:29:29',
       move:{
         coordinates:[0,2],
         side:'X'
@@ -129,12 +129,12 @@ describe('place move command', function () {
     };
     then = [
       {
-        event: "IllegalMove",
+        event: 'IllegalMove',
         user: {
-          userName: "Gummi"
+          userName: 'God'
         },
-        name: "TheFirstGame",
-        timeStamp: "2014-12-02T11:29:29",
+        name: 'TheFirstGame',
+        timeStamp: '2014-12-02T11:29:29',
         move:{
           coordinates:[0,2],
           side:'X'
@@ -154,12 +154,12 @@ describe('place move command', function () {
 
     when =
     {
-      cmd: "PlaceMove",
+      cmd: 'PlaceMove',
       user: {
-        userName: "Gummi"
+        userName: 'God'
       },
-      name: "TheFirstGame",
-      timeStamp: "2014-12-02T11:29:29",
+      name: 'TheFirstGame',
+      timeStamp: '2014-12-02T11:29:29',
       move:{
         coordinates:[0,2],
         side:'X'
@@ -168,12 +168,12 @@ describe('place move command', function () {
     then = [
       moveEvent([0,2],'X'),
       {
-        event: "GameWon",
+        event: 'GameWon',
         user: {
-          userName: "Gummi"
+          userName: 'God'
         },
-        name: "TheFirstGame",
-        timeStamp: "2014-12-02T11:29:29"
+        name: 'TheFirstGame',
+        timeStamp: '2014-12-02T11:29:29'
       }
     ];
 
@@ -189,12 +189,12 @@ describe('place move command', function () {
 
     when =
     {
-      cmd: "PlaceMove",
+      cmd: 'PlaceMove',
       user: {
-        userName: "Gummi"
+        userName: 'God'
       },
-      name: "TheFirstGame",
-      timeStamp: "2014-12-02T11:29:29",
+      name: 'TheFirstGame',
+      timeStamp: '2014-12-02T11:29:29',
       move:{
         coordinates:[2,2],
         side:'X'
@@ -203,12 +203,12 @@ describe('place move command', function () {
     then = [
       moveEvent([2,2],'X'),
       {
-        event: "GameWon",
+        event: 'GameWon',
         user: {
-          userName: "Gummi"
+          userName: 'God'
         },
-        name: "TheFirstGame",
-        timeStamp: "2014-12-02T11:29:29"
+        name: 'TheFirstGame',
+        timeStamp: '2014-12-02T11:29:29'
       }
     ];
 
@@ -224,12 +224,12 @@ describe('place move command', function () {
 
     when =
     {
-      cmd: "PlaceMove",
+      cmd: 'PlaceMove',
       user: {
-        userName: "Gummi"
+        userName: 'God'
       },
-      name: "TheFirstGame",
-      timeStamp: "2014-12-02T11:29:29",
+      name: 'TheFirstGame',
+      timeStamp: '2014-12-02T11:29:29',
       move:{
         coordinates:[2,2],
         side:'O'
@@ -238,12 +238,12 @@ describe('place move command', function () {
     then = [
       moveEvent([2,2],'O'),
       {
-        event: "GameWon",
+        event: 'GameWon',
         user: {
-          userName: "Gummi"
+          userName: 'God'
         },
-        name: "TheFirstGame",
-        timeStamp: "2014-12-02T11:29:29"
+        name: 'TheFirstGame',
+        timeStamp: '2014-12-02T11:29:29'
       }
     ];
 
@@ -268,12 +268,12 @@ describe('place move command', function () {
 
     when =
     {
-      cmd: "PlaceMove",
+      cmd: 'PlaceMove',
       user: {
-        userName: "Gummi"
+        userName: 'God'
       },
-      name: "TheFirstGame",
-      timeStamp: "2014-12-02T11:29:29",
+      name: 'TheFirstGame',
+      timeStamp: '2014-12-02T11:29:29',
       move:{
         coordinates:[2,1],
         side:'O'
@@ -282,12 +282,12 @@ describe('place move command', function () {
     then = [
       moveEvent([2,1],'O'),
       {
-        event: "GameWon",
+        event: 'GameWon',
         user: {
-          userName: "Gummi"
+          userName: 'God'
         },
-        name: "TheFirstGame",
-        timeStamp: "2014-12-02T11:29:29"
+        name: 'TheFirstGame',
+        timeStamp: '2014-12-02T11:29:29'
       }
     ];
 
@@ -309,12 +309,12 @@ describe('place move command', function () {
 
     when =
     {
-      cmd: "PlaceMove",
+      cmd: 'PlaceMove',
       user: {
-        userName: "Gummi"
+        userName: 'God'
       },
-      name: "TheFirstGame",
-      timeStamp: "2014-12-02T11:29:29",
+      name: 'TheFirstGame',
+      timeStamp: '2014-12-02T11:29:29',
       move:{
         coordinates:[2,2],
         side:'O'
@@ -323,12 +323,12 @@ describe('place move command', function () {
     then = [
       moveEvent([2,2],'O'),
       {
-        event: "GameDraw",
+        event: 'GameDraw',
         user: {
-          userName: "Gummi"
+          userName: 'God'
         },
-        name: "TheFirstGame",
-        timeStamp: "2014-12-02T11:29:29"
+        name: 'TheFirstGame',
+        timeStamp: '2014-12-02T11:29:29'
       }
     ];
 
