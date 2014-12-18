@@ -20,8 +20,8 @@ describe('Tictactoe game play', function () {
   }
 
   it('should play to win', function () {
-    createPage.gameName.sendKeys("Cheese");
-    createPage.userName.sendKeys("Jerry");
+    createPage.gameName.sendKeys("Christmas ");
+    createPage.userName.sendKeys("God");
 
     createPage.createGameButton.click();
 
@@ -48,7 +48,7 @@ describe('Tictactoe game play', function () {
         // switch to new window
         browser.switchTo().window(joinerHandle);
 
-        joinPage.userName.sendKeys("Tom");
+        joinPage.userName.sendKeys("BabyJesus");
         joinPage.joinGameButton.click();
 
 
@@ -61,7 +61,7 @@ describe('Tictactoe game play', function () {
           tictactoe.x1y1.click();
           expect(tictactoe.x1y1.getText()).toBe('O');
 
-          expect(tictactoe.myname.getText()).toBe("Tom");
+          expect(tictactoe.myname.getText()).toBe("BabyJesus");
 
           browser.switchTo().window(creatorHandle).then(function () {
             browser.driver.wait(function () {
@@ -70,7 +70,7 @@ describe('Tictactoe game play', function () {
               });
             }).then(function () {
 
-              expect(tictactoe.myname.getText()).toBe("Jerry");
+              expect(tictactoe.myname.getText()).toBe("God");
 
               browser.sleep(1000);
               tictactoe.x1y0.click();
@@ -83,7 +83,7 @@ describe('Tictactoe game play', function () {
                   });
                 }).then(function () {
 
-                  expect(tictactoe.myname.getText()).toBe("Tom");
+                  expect(tictactoe.myname.getText()).toBe("BabyJesus");
 
                   tictactoe.x1y2.click();
                   browser.sleep(1000);
@@ -96,7 +96,7 @@ describe('Tictactoe game play', function () {
                       });
                     }).then(function () {
 
-                      expect(tictactoe.myname.getText()).toBe("Jerry");
+                      expect(tictactoe.myname.getText()).toBe("God");
 
                       placeMove(tictactoe.x2y0, 'X');
 

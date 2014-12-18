@@ -14,15 +14,15 @@ describe('Tictactoe game play', function() {
   });
 
   it('should play one game to win', function(done) {
-    game.nameOfGame("Cheese!");
-    game.nameOfUser("Jerry!");
+    game.nameOfGame("Christmas");
+    game.nameOfUser("God");
     game.createGame();
     game.waitForTictactoePage();
     game.expectGameBoardShowing();
     game.expectFirstCellShowing();
 
     game.joinWithOtherSide(function(otherside){
-      otherside.join("GULLI");
+      otherside.join("TEST");
 
       browser.wait(function () {
         return browser.isElementPresent(by.css('#gameboard')).then(function (el) {
