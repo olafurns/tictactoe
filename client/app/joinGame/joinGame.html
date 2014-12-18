@@ -1,8 +1,12 @@
-<div class="container">
-  <label for="userName">UserName</label>
-  <input id="userName" ng-model="userName">
+<div class="container" style="margin-top:50px">
 
-  <div>
-    <button id="joinGame" ng-click="joinGame()">Join Game</button>
-  </div>
+  <form class="form-horizontal" role="form">
+    <div class="form-group">
+      <label for="userName" class="col-lg-2">UserName</label>
+      <input id="userName" class="col-lg-4" ng-model="userName">
+    </div>
+    <div>
+      <button id="joinGame" class="btn btn-primary" ng-click="joinGame()">Join Game</button>
+    </div>
+  </form>
 </div>
